@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d9ebd42-2c99-4c35-83d2-1fdfce869c83" name="Default" comment="用户&#10;&#10;(cherry picked from commit c8d7d52220a07888d24db0dd584762c170ae68b9)&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+    <list default="true" id="0d9ebd42-2c99-4c35-83d2-1fdfce869c83" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/mapper/solutionmanagerMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Settlement.iml" afterPath="$PROJECT_DIR$/Settlement.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/userOperateController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/userOperateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mapper/userOperateMapper.java" afterPath="$PROJECT_DIR$/src/main/java/mapper/userOperateMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/userOperateService.java" afterPath="$PROJECT_DIR$/src/main/java/service/userOperateService.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -75,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userOperateServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userOperateServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1598">
+            <state relative-caret-position="638">
               <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -92,6 +87,52 @@
                 <element signature="e#3618#3634#0" expanded="true" />
                 <element signature="e#4176#4192#0" expanded="true" />
                 <element signature="e#4244#4260#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userOperateMapper.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+              <folding>
+                <marker date="1488274813089" expanded="true" signature="263:360" ph="select count... projectinfo" />
+                <marker date="1488274813089" expanded="true" signature="426:847" ph="insert into projectinfo... " />
+                <marker date="1488274813089" expanded="true" signature="942:1219" ph="select a.pro... projectid" />
+                <marker date="1488274813089" expanded="true" signature="1032:1159" ph="select proje... projectinfo" />
+                <marker date="1488274813089" expanded="true" signature="1280:1441" ph="insert into projectlink... " />
+                <marker date="1488274813089" expanded="true" signature="1506:1869" ph="update proje... " />
+                <marker date="1488274813089" expanded="true" signature="1934:2065" ph="delete from " />
+                <marker date="1488274813089" expanded="true" signature="2130:2204" ph="delete from " />
+                <marker date="1488274813089" expanded="true" signature="2268:2385" ph="delete from " />
+                <marker date="1488274813089" expanded="true" signature="2449:2523" ph="delete from " />
+                <marker date="1488274813089" expanded="true" signature="2613:4911" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="2829:4683" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="3035:4464" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="3231:4255" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="3419:4053" ph="select @rown... " />
+                <marker date="1488274813089" expanded="true" signature="4997:5277" ph="select b.use... projectinfo" />
+                <marker date="1488274813089" expanded="true" signature="5864:8538" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="6080:8310" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="6286:8090" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="6482:7880" ph="select c.row... rownum" />
+                <marker date="1488274813089" expanded="true" signature="6670:7678" ph="select @rown... " />
+                <marker date="1488274813089" expanded="true" signature="8629:8858" ph="select a.use... usertable" />
+                <marker date="1488274813089" expanded="true" signature="8719:8798" ph="select useri... projectlink" />
+                <marker date="1488274813089" expanded="true" signature="8949:10734" ph="select c.pro... projectid" />
+                <marker date="1488274813089" expanded="true" signature="9154:10520" ph="select c.pro... projectid" />
+                <marker date="1488274813089" expanded="true" signature="9347:10316" ph="select c.pro... projectid" />
+                <marker date="1488274813089" expanded="true" signature="9530:10122" ph="select c.pro... projectid" />
+                <marker date="1488274813089" expanded="true" signature="9705:9968" ph="select a.pro... projectinfo" />
+                <marker date="1488274813089" expanded="true" signature="10827:10961" ph="select k.use... projectlink" />
+                <marker date="1488274813089" expanded="true" signature="11046:11378" ph="select a.fil... fileid" />
+                <marker date="1488274813089" expanded="true" signature="11163:11349" ph="select filei... projectfile" />
+                <marker date="1488274813089" expanded="true" signature="11456:11591" ph="select count... projectlink" />
+                <marker date="1488274813089" expanded="true" signature="11684:11833" ph="select filei... projectfile" />
+                <marker date="1488274813089" expanded="true" signature="11914:12152" ph="select filei... projectfile" />
+                <marker date="1488274813089" expanded="true" signature="12236:12359" ph="select third... typetap" />
               </folding>
             </state>
           </provider>
@@ -150,6 +191,7 @@
         <option value="$PROJECT_DIR$/src/main/java/controller/userOperateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/mapper/userOperateMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml" />
       </list>
     </option>
   </component>
@@ -233,6 +275,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Settlement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Settlement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -944,7 +1012,7 @@
       <option name="presentableId" value="Default" />
       <updated>1487938166687</updated>
       <workItem from="1488012012495" duration="7050000" />
-      <workItem from="1488250969881" duration="12252000" />
+      <workItem from="1488250969881" duration="12752000" />
     </task>
     <task id="LOCAL-00001" summary="用户">
       <created>1488216135701</created>
@@ -1009,15 +1077,22 @@
       <option name="project" value="LOCAL" />
       <updated>1488273295558</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="用户&#10;&#10;(cherry picked from commit c8d7d52220a07888d24db0dd584762c170ae68b9)&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+      <created>1488274517655</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1488274517655</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19302000" />
+    <option name="totallyTimeSpent" value="19802000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-29" width="1920" height="1109" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1089,9 +1164,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="用户" />
-    <MESSAGE value="用户&#10;&#10;(cherry picked from commit c8d7d52220a07888d24db0dd584762c170ae68b9)&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="用户&#10;&#10;(cherry picked from commit c8d7d52)" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户&#10;&#10;(cherry picked from commit c8d7d52)" />
+    <MESSAGE value="用户&#10;&#10;(cherry picked from commit c8d7d52220a07888d24db0dd584762c170ae68b9)&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="用户&#10;&#10;(cherry picked from commit c8d7d52220a07888d24db0dd584762c170ae68b9)&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1215,7 +1290,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1598">
+        <state relative-caret-position="638">
           <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1229,6 +1304,50 @@
             <element signature="e#3618#3634#0" expanded="true" />
             <element signature="e#4176#4192#0" expanded="true" />
             <element signature="e#4244#4260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding>
+            <marker date="1488274813089" expanded="true" signature="263:360" ph="select count... projectinfo" />
+            <marker date="1488274813089" expanded="true" signature="426:847" ph="insert into projectinfo... " />
+            <marker date="1488274813089" expanded="true" signature="942:1219" ph="select a.pro... projectid" />
+            <marker date="1488274813089" expanded="true" signature="1032:1159" ph="select proje... projectinfo" />
+            <marker date="1488274813089" expanded="true" signature="1280:1441" ph="insert into projectlink... " />
+            <marker date="1488274813089" expanded="true" signature="1506:1869" ph="update proje... " />
+            <marker date="1488274813089" expanded="true" signature="1934:2065" ph="delete from " />
+            <marker date="1488274813089" expanded="true" signature="2130:2204" ph="delete from " />
+            <marker date="1488274813089" expanded="true" signature="2268:2385" ph="delete from " />
+            <marker date="1488274813089" expanded="true" signature="2449:2523" ph="delete from " />
+            <marker date="1488274813089" expanded="true" signature="2613:4911" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="2829:4683" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="3035:4464" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="3231:4255" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="3419:4053" ph="select @rown... " />
+            <marker date="1488274813089" expanded="true" signature="4997:5277" ph="select b.use... projectinfo" />
+            <marker date="1488274813089" expanded="true" signature="5864:8538" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="6080:8310" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="6286:8090" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="6482:7880" ph="select c.row... rownum" />
+            <marker date="1488274813089" expanded="true" signature="6670:7678" ph="select @rown... " />
+            <marker date="1488274813089" expanded="true" signature="8629:8858" ph="select a.use... usertable" />
+            <marker date="1488274813089" expanded="true" signature="8719:8798" ph="select useri... projectlink" />
+            <marker date="1488274813089" expanded="true" signature="8949:10734" ph="select c.pro... projectid" />
+            <marker date="1488274813089" expanded="true" signature="9154:10520" ph="select c.pro... projectid" />
+            <marker date="1488274813089" expanded="true" signature="9347:10316" ph="select c.pro... projectid" />
+            <marker date="1488274813089" expanded="true" signature="9530:10122" ph="select c.pro... projectid" />
+            <marker date="1488274813089" expanded="true" signature="9705:9968" ph="select a.pro... projectinfo" />
+            <marker date="1488274813089" expanded="true" signature="10827:10961" ph="select k.use... projectlink" />
+            <marker date="1488274813089" expanded="true" signature="11046:11378" ph="select a.fil... fileid" />
+            <marker date="1488274813089" expanded="true" signature="11163:11349" ph="select filei... projectfile" />
+            <marker date="1488274813089" expanded="true" signature="11456:11591" ph="select count... projectlink" />
+            <marker date="1488274813089" expanded="true" signature="11684:11833" ph="select filei... projectfile" />
+            <marker date="1488274813089" expanded="true" signature="11914:12152" ph="select filei... projectfile" />
+            <marker date="1488274813089" expanded="true" signature="12236:12359" ph="select third... typetap" />
           </folding>
         </state>
       </provider>
