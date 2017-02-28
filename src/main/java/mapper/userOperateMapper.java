@@ -1,5 +1,7 @@
 package mapper;
 
+import model.user_info;
+
 import java.util.Map;
 
 /**
@@ -8,4 +10,12 @@ import java.util.Map;
 public interface userOperateMapper {
 
     void register(Map<Object, Object> map);
+
+    user_info login(Map<Object, Object> map);
+
+    void changePwd(Map<Object, Object> map);
+
+    void checkToken(Map<Object, Object> map);
+
+    void modifyInfo(Map<Object, Object> map);
 }
