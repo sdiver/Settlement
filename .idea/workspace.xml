@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d9ebd42-2c99-4c35-83d2-1fdfce869c83" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Settlement.iml" afterPath="$PROJECT_DIR$/Settlement.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/userOperateController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/userOperateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mapper/userOperateMapper.java" afterPath="$PROJECT_DIR$/src/main/java/mapper/userOperateMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/authorityVo.java" afterPath="$PROJECT_DIR$/src/main/java/model/authorityVo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml" />
     </list>
     <list id="f2156c61-19e5-4135-87aa-30db38e4a575" name="Revert: 用户" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1138,11 +1129,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488369363729</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="ces">
+      <created>1488369656462</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1488369656462</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23660000" />
+    <option name="totallyTimeSpent" value="23754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-29" width="1928" height="1113" extended-state="0" />
@@ -1229,6 +1227,7 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="BEK_SORT_TYPE" value="1" />
               <option name="RECENTLY_FILTERED_USER_GROUPS">
                 <collection />
               </option>
