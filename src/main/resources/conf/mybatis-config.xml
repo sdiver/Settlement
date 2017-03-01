@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    		 <typeAlias alias="user_info" type="model.user_info"/>
          <typeAlias alias="authorityVo" type="model.authorityVo"/>
     </typeAliases>
-
+    <!-- 映射map -->
     <!-- 映射map -->
     <mappers>
     </mappers>
