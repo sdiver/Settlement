@@ -1,5 +1,6 @@
 package service;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -15,8 +16,8 @@ public interface settlementManageService {
 
     Map<Object,Object> setUpCase(int caseRegionId, int caseCellphoneNumber, int isHousehold, int isOwner,
                                  int case_status, String caseAddress, String caseReporter, String caseIdentity,
-                                 String caseTime, int userId);
+                                 Date caseTime, int userId);
 
-    Map<Object,Object> forensicsUpload(String forensics, String caseForensics, String forensicsType,
+    Map<Object,Object> forensicsUpload(String forensics, String caseForensics, int forensicsType,
                                        String forensicsContext, int lostAmount, int lostWeight);
 }

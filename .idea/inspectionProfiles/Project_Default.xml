@@ -30,7 +30,12 @@
       <option name="IGNORE_JAVADOC_PERIOD" value="true" />
       <option name="IGNORE_DUPLICATED_THROWS" value="false" />
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
-      <option name="myAdditionalJavadocTags" value="Title:,Title:,Package,Description:,date,param:userName,,return:java.util.Map&lt;java.lang.Object,java.lang.Object&gt;,author:,Date:,return:java.util.Map&lt;java.lang.Object,java.lang.Object&gt;,param:userName,,param:userName,,param:,return:,return:,version:,date:,Package:" />
+      <option name="myAdditionalJavadocTags" value="Title:,Date:,author:,return:,param:,Description:,Date:,author:,return:,param:,Description:,Date:,author:,return:,param:,Description:,date,Description:,Package" />
+    </inspection_tool>
+    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="processCode" value="true" />
+      <option name="processLiterals" value="true" />
+      <option name="processComments" value="true" />
     </inspection_tool>
   </profile>
 </component>

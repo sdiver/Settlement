@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.settlementManageMapper">
+    <insert id="setUpCase"></insert>
+    <insert id="forensicsUpload"></insert>
+    <select id="listTown" resultType="model.region"></select>
+    <select id="listVillage" resultType="model.region"></select>
+    <select id="searchByForensics" resultType="java.lang.Integer"></select>
+    <select id="searchByForensicsType" resultType="java.lang.String"></select>
+</mapper>

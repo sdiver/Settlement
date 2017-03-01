@@ -11,12 +11,19 @@ import service.settlementManageService;
 import service.userOperateService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by sdiver on 3/1/17.
- */
+/**   
+* @Title: settlementManageController
+* @Package controller 
+* @Description: settlementManageController.java
+* @author Sdiver 18605916639_wo_cn   
+* @date 2017/3/1 下午11:57 
+* @version V1.0   
+*/
 @Controller
 @RequestMapping({"/settlementManage"})
 public class settlementManageController {
@@ -25,6 +32,14 @@ public class settlementManageController {
     private userOperateService userOperateservice;
     @Autowired
     private settlementManageService settlementManageservice;
+    /**
+     *@Title: listRegion
+     *@Description: settlementManageController.java
+     *@param: [request]
+     *@return: java.util.Map<java.lang.Object_java.lang.Object>
+     *@author: Sdiver
+     *@Date: 2017/3/2 上午12:02
+     */
     @RequestMapping(value = "/listRegion", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody
     Map<Object, Object> listRegion(HttpServletRequest request) throws Exception {
@@ -40,6 +55,14 @@ public class settlementManageController {
         map.put("result", 0);
         return map;
     }
+    /**
+     *@Title: setUpCase
+     *@Description: settlementManageController.java
+     *@param: [request]
+     *@return: java.util.Map<java.lang.Object_java.lang.Object>
+     *@author: Sdiver
+     *@Date: 2017/3/2 上午12:03
+     */
     @RequestMapping(value = "/setUpCase", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody
     Map<Object, Object> setUpCase(HttpServletRequest request) throws Exception {
@@ -56,15 +79,25 @@ public class settlementManageController {
         String caseReporter = request.getParameter("caseReporter");
         String caseIdentity = request.getParameter("caseIdentity");
         String caseTime = request.getParameter("caseTime");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date caseFormatTime = new Date(dateFormat.parse(caseTime).getTime());
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
             map = settlementManageservice.setUpCase(caseRegionId, caseCellphoneNumber, isHousehold, isOwner,
-                    case_status, caseAddress, caseReporter, caseIdentity, caseTime, userId);
+                    case_status, caseAddress, caseReporter, caseIdentity, caseFormatTime, userId);
             return map;
         }
         map.put("result", 0);
         return map;
     }
+    /**
+     *@Title: forensicsUpload
+     *@Description: settlementManageController.java
+     *@param: [request]
+     *@return: java.util.Map<java.lang.Object_java.lang.Object>
+     *@author: Sdiver
+     *@Date: 2017/3/2 上午12:03
+     */
     @RequestMapping(value = "/forensicsUpload", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody
     Map<Object, Object> forensicsUpload(HttpServletRequest request) throws Exception {
@@ -74,7 +107,7 @@ public class settlementManageController {
         String token = request.getParameter("token");
         String forensics = request.getParameter("forensics");
         String caseForensics = request.getParameter("caseForensics");
-        String forensicsType = request.getParameter("forensicsType");
+        int forensicsType = Integer.parseInt(request.getParameter("forensicsType"));
         String forensicsContext = request.getParameter("forensicsContext");
         int lostAmount = Integer.parseInt(request.getParameter("lostAmount"));
         int lostWeight = Integer.parseInt(request.getParameter("lostWeight"));
@@ -87,4 +120,5 @@ public class settlementManageController {
         map.put("result", 0);
         return map;
     }
+
 }
