@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d9ebd42-2c99-4c35-83d2-1fdfce869c83" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/util/encryption.java" />
+    <list default="true" id="0d9ebd42-2c99-4c35-83d2-1fdfce869c83" name="Default" comment="用户&#10;&#10;(cherry picked from commit c8d7d52220a07888d24db0dd584762c170ae68b9)&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/model/authorityVo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -1176,7 +1177,7 @@
       <workItem from="1488297617522" duration="10000" />
       <workItem from="1488299238657" duration="1519000" />
       <workItem from="1488300820579" duration="59000" />
-      <workItem from="1488300917384" duration="6620000" />
+      <workItem from="1488300917384" duration="6746000" />
     </task>
     <task id="LOCAL-00001" summary="用户">
       <created>1488216135701</created>
@@ -1283,11 +1284,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488334703156</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="用户&#10;&#10;(cherry picked from commit c8d7d52220a07888d24db0dd584762c170ae68b9)&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
+      <created>1488334978538</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1488334978538</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32472000" />
+    <option name="totallyTimeSpent" value="32598000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
