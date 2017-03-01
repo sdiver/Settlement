@@ -8,11 +8,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
         <!-- 命名空间 -->
     <typeAliases>
-   		 <typeAlias alias="fileinfo" type="model.fileinfo"/>
-         <typeAlias alias="projectinfo" type="model.projectinfo"/>
-         <typeAlias alias="projectuser" type="model.projectuser"/>
-         <typeAlias alias="usertable" type="model.usertable"/>
-         <typeAlias alias= "tapinfo" type="model.tapinfo"/>
+   		 <typeAlias alias="user_info" type="model.user_info"/>
+         <typeAlias alias="authorityVo" type="model.authorityVo"/>
     </typeAliases>
 
     <!-- 映射map -->

@@ -1,13 +1,15 @@
 package service.serviceImpl;
 
 import mapper.userOperateMapper;
+import model.authorityVo;
 import model.user_info;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.userOperateService;
-import uil.encryption;
+import util.encryption;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,11 +60,23 @@ public class userOperateServiceImpl implements userOperateService {
     public Map<Object, Object> login(String userName, String userPassword) {
         Map<Object, Object> map = new HashMap<Object, Object>();
         Map<Object, Object> result = new HashMap<Object, Object>();
+        Map<Object, Object> acodeUpdate = new HashMap<Object, Object>();
         String password = encrypt.MD5(userPassword);
         map.put("userName", userName);
         map.put("password", password);
         user_info userInformation = userOperatemapper.login(map);
+        int userId = userInformation.getUser_id();
+        String uuid = encrypt.uuidFactory();
+        String MDuuid = "sdiveriscodegod";
+        MDuuid = MDuuid + uuid + userId;
+        String activeCode = encrypt.MD5(MDuuid);
+        acodeUpdate.put("userId", userId);
+        acodeUpdate.put("activeCode", activeCode);
+        userOperatemapper.updateCode(acodeUpdate);
+        userInformation.setActive_code(activeCode);
+        List<authorityVo> authorityVoList = userOperatemapper.listAuthority(userInformation.getUser_type_id());
         result.put("userInfo", userInformation);
+        result.put("authorityVoList", authorityVoList);
         return result;
     }
     /**
@@ -81,9 +95,15 @@ public class userOperateServiceImpl implements userOperateService {
         map.put("userId", userId);
         map.put("password", password);
         map.put("newPwd", newPwd);
-        userOperatemapper.changePwd(map);
-        result.put("result", 1);
+        int check = userOperatemapper.checkPwd(map);
+        if (check == 1) {
+            userOperatemapper.changePwd(map);
+            result.put("result", 1);
+            return result;
+        }
+        result.put("result", 0);
         return result;
+
     }
     /**
      *@Title: userOperateServiceImpl
@@ -93,14 +113,13 @@ public class userOperateServiceImpl implements userOperateService {
      *@date: 2/28/17
      *@version: V1.0
      */
-    public Map<Object, Object> checkToken(int userId, String token) {
+    public int checkToken(int userId, String token) {
         Map<Object, Object> map = new HashMap<Object, Object>();
         Map<Object, Object> result = new HashMap<Object, Object>();
         map.put("userId", userId);
         map.put("token", token);
-        userOperatemapper.checkToken(map);
-        result.put("result", 1);
-        return result;
+        int check = userOperatemapper.checkToken(map);
+        return check;
     }
     /**
      *@Title: userOperateServiceImpl

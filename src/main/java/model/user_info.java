@@ -7,23 +7,26 @@
 * @version V1.0   
 */
 package model;
-
+/**   
+* @Title: user_info
+* @Package model 
+* @Description: user_info.java
+* @author Sdiver 18605916639_wo_cn   
+* @date 2017/3/1 上午2:37 
+* @version V1.0   
+*/
 public class user_info{
-
     private int user_id;
-
     private String user_name;
-
     private String user_ch_name;
-
     private int phone_number;
-
     private int user_type_id;
-
+    private String user_type;
     private int work_area_id;
-
     private String work_address;
-
+    private String active_code;
+    private String town;
+    private String village;
     public int getUser_id() {
         return user_id;
     }
@@ -80,6 +83,35 @@ public class user_info{
         this.work_address = work_address;
     }
 
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
+    }
+
+    public String getActive_code() {
+        return active_code;
+    }
+
+    public void setActive_code(String active_code) {
+        this.active_code = active_code;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+    public String getVillage() {
+        return village;
+    }
+    public void setVillage(String village) {
+        this.village = village;
+    }
     @Override
     public String toString() {
         return "user_info{" +
@@ -88,8 +120,12 @@ public class user_info{
                 ", user_ch_name='" + user_ch_name + '\'' +
                 ", phone_number=" + phone_number +
                 ", user_type_id=" + user_type_id +
+                ", user_type='" + user_type + '\'' +
                 ", work_area_id=" + work_area_id +
                 ", work_address='" + work_address + '\'' +
+                ", active_code='" + active_code + '\'' +
+                ", town='" + town + '\'' +
+                ", village='" + village + '\'' +
                 '}';
     }
 }

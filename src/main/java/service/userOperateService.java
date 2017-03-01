@@ -14,6 +14,6 @@ public interface userOperateService {
                                  int workAreaId, String workAddress);
     Map<Object,Object> login(String userName, String userPassword);
     Map<Object,Object> changePwd(int userId, String userPassword, String newPassword);
-    Map<Object,Object> checkToken(int userId, String token);
+    int checkToken(int userId, String token);
     Map<Object,Object> modifyInfo(int userId, String phoneNumber, String workAddress);
 }
