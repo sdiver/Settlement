@@ -90,10 +90,10 @@ public class userOperateController {
      *@Date: 2/28/17 3:48 PM
      */
     @RequestMapping(value = {"/checkToken"}, method = {RequestMethod.POST}, produces = {"application/json; charset = utf-8"})
-    public @ResponseBody int checkToken(HttpServletRequest request) throws Exception{
+    public @ResponseBody Map<Object, Object> checkToken(HttpServletRequest request) throws Exception{
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
-        int map = userOperateservice.checkToken(userId, token);
+        Map<Object, Object> map = userOperateservice.checkToken(userId, token);
         return map;
     }
     /**

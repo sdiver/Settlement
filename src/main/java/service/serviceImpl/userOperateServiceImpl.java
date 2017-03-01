@@ -65,18 +65,22 @@ public class userOperateServiceImpl implements userOperateService {
         map.put("userName", userName);
         map.put("password", password);
         user_info userInformation = userOperatemapper.login(map);
-        int userId = userInformation.getUser_id();
-        String uuid = encrypt.uuidFactory();
-        String MDuuid = "sdiveriscodegod";
-        MDuuid = MDuuid + uuid + userId;
-        String activeCode = encrypt.MD5(MDuuid);
-        acodeUpdate.put("userId", userId);
-        acodeUpdate.put("activeCode", activeCode);
-        userOperatemapper.updateCode(acodeUpdate);
-        userInformation.setActive_code(activeCode);
-        List<authorityVo> authorityVoList = userOperatemapper.listAuthority(userInformation.getUser_type_id());
-        result.put("userInfo", userInformation);
-        result.put("authorityVoList", authorityVoList);
+        if(userInformation != null) {
+            int userId = userInformation.getUser_id();
+            String uuid = encrypt.uuidFactory();
+            String MDUuid = "SdiverIsCodeGod";
+            MDUuid = MDUuid + uuid + userId;
+            String activeCode = encrypt.MD5(MDUuid);
+            acodeUpdate.put("userId", userId);
+            acodeUpdate.put("activeCode", activeCode);
+            userOperatemapper.updateCode(acodeUpdate);
+            userInformation.setActive_code(activeCode);
+            List<authorityVo> authorityVoList = userOperatemapper.listAuthority(userInformation.getUser_type_id());
+            result.put("userInfo", userInformation);
+            result.put("authorityVoList", authorityVoList);
+            return result;
+        }
+        result.put("result", 0);
         return result;
     }
     /**
@@ -98,6 +102,7 @@ public class userOperateServiceImpl implements userOperateService {
         int check = userOperatemapper.checkPwd(map);
         if (check == 1) {
             userOperatemapper.changePwd(map);
+            userOperatemapper.updateUser(userId);
             result.put("result", 1);
             return result;
         }
@@ -136,6 +141,7 @@ public class userOperateServiceImpl implements userOperateService {
         map.put("phoneNumber", phoneNumber);
         map.put("workAddress", workAddress);
         userOperatemapper.modifyInfo(map);
+        userOperatemapper.updateUser(userId);
         result.put("result", 1);
         return result;
     }

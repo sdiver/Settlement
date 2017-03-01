@@ -68,4 +68,9 @@
 		1=1
 		WHERE user_id = #{userId, jdbcType = INTEGER}
 	</update>
+	<update id="updateUser" parameterType="int">
+		UPDATE user_info
+		SET user_modify = sysdate()
+		WHERE user_id = #{userId}
+	</update>
 </mapper>

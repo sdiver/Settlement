@@ -1,12 +1,12 @@
 package model;
 /**   
-* @Title: authorityVo
-* @Package model 
-* @Description: authorityVo.java
-* @author Sdiver 18605916639_wo_cn   
-* @date 2017/3/1 上午2:37 
-* @version V1.0   
-*/
+ * @Title: authorityVo
+ * @Package model 
+ * @Description: authorityVo.java
+ * @author Sdiver 18605916639_wo_cn   
+ * @date 2017/3/1 上午2:37 
+ * @version V1.0   
+ */
 public class authorityVo {
     private int authorityId;
     private int ifAthority;

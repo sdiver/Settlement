@@ -23,4 +23,5 @@ public interface userOperateMapper {
     void changePwd(Map<Object, Object> map);
     int checkToken(Map<Object, Object> map);
     void modifyInfo(Map<Object, Object> map);
+    void updateUser(int userId);
 }
