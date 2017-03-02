@@ -43,8 +43,13 @@ public class settlementManageServiceImpl implements settlementManageService {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         Date now = new Date();
         int code = Integer.parseInt(dateFormat.format(now));
-        int caseCode = caseRegionId + code;
+        int caseCode = (caseRegionId + code) * 100 + 1;
+        SimpleDateFormat dateFor = new SimpleDateFormat("yyyyMMdd");
+        Date nowTime = new Date();
+        int codeTime = Integer.parseInt(dateFor.format(nowTime));
+        int caseCodeTime = caseRegionId + codeTime;
         String caseForensics = encrypt.uuidFactory();
+        map.put("caseCodeTime", caseCodeTime);
         map.put("caseCode", caseCode);
         map.put("caseRegionId", caseRegionId);
         map.put("caseAddress", caseAddress);
@@ -56,7 +61,7 @@ public class settlementManageServiceImpl implements settlementManageService {
         map.put("isOwner", isOwner);
         map.put("caseForensics", caseForensics);
         map.put("caseStatus", 0);
-        map.put("caseUploadUser", userId);
+        map.put("d", userId);
         settlementManagemapper.setUpCase(map);
         result.put("result", 1);
         return result;

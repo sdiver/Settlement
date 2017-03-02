@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mapper.settlementManageMapper">
-    <insert id="setUpCase"></insert>
-    <insert id="forensicsUpload"></insert>
+    <insert id="setUpCase" parameterType="map">
+        INSERT INTO settlement_of_claims(case_code, case_create, case_update, case_region_id, case_address,
+          case_time, case_reporter, case_cellphone_number, case_indentity, is_household, is_owner, case_forensics,
+          case_status, case_upload_user)
+        SELECT count(case_code)+ #{caseCode, jdbcType=VARCHAR},
+          sysdate(),sysdate(),#{caseRegionId, jdbcType=INTEGER},
+          #{caseAddress, jdbcType=VARCHAR}, #{caseTime, jdbcType=DATE},
+          #{caseReporter, jdbcType=VARCHAR},#{caseCellphoneNumber, jdbcType=INTEGER},
+          #{caseIdentity ,jdbcType=VARCHAR}, #{isHousehold, jdbcType=INTEGER},
+          #{isOwner, jdbcType=INTEGER}, #{caseForensics, jdbcType=VARCHAR},
+          #{caseStatus, jdbcType=INTEGER}, #{caseUploadUser, jdbcType=INTEGER}
+        FROM settlement_of_claims WHERE case_code like '${caseCodeTime}%'
+    </insert>
+    <insert id="forensicsUpload" parameterType="map">
+        INSERT INTO forensics(create_time, update_time, case_forensics, forensics_id, forensics_type,
+        forensics_type, lost_amount, lost_weight, photo_id, photo_url, photo_mini_url, forensics_context)
+        SELECT
+    </insert>
     <select id="listTown" resultType="model.region"></select>
     <select id="listVillage" resultType="model.region"></select>
     <select id="searchByForensics" resultType="java.lang.Integer"></select>
