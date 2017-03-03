@@ -5,7 +5,7 @@
         INSERT INTO settlement_of_claims(case_code, case_create, case_update, case_region_id, case_address,
           case_time, case_reporter, case_cellphone_number, case_indentity, is_household, is_owner, case_forensics,
           case_status, case_upload_user)
-        SELECT count(case_code)+ #{caseCode, jdbcType=VARCHAR},
+        SELECT count(case_code)+ #{caseCode, jdbcType=INTEGER},
           sysdate(),sysdate(),#{caseRegionId, jdbcType=INTEGER},
           #{caseAddress, jdbcType=VARCHAR}, #{caseTime, jdbcType=DATE},
           #{caseReporter, jdbcType=VARCHAR},#{caseCellphoneNumber, jdbcType=INTEGER},
@@ -16,11 +16,39 @@
     </insert>
     <insert id="forensicsUpload" parameterType="map">
         INSERT INTO forensics(create_time, update_time, case_forensics, forensics_id, forensics_type,
-        forensics_type, lost_amount, lost_weight, photo_id, photo_url, photo_mini_url, forensics_context)
-        SELECT
+        lost_amount, lost_weight, photo_id, photo_url, photo_mini_url, forensics_context)
+        select sysdate(), sysdate(), #{case_frensics, jdbcType=VARCHAR},a.countA,
+        #{forensicsType, jdbcType=INTEGER}, #{lostAmount, jdbcType=INTEGER}, #{lostWeight, jdbcType=INTEGER},
+        b.countB, #{photoUrl, jdbcType=VARCHAR}, #{photoMiniUrl, jdbcType=VARCHAR},
+        #{forensicsContext, jdbcType=VARCHAR}
+        from
+        (
+          select case_forensics, count(*)+1 countA
+          from forensics
+          where case_forensics=#{case_frensics, jdbcType=VARCHAR}
+          group by case_forensics
+        )a
+        left join (
+            select case_forensics, count(*)+1 countB
+            from forensics
+            where case_forensics = #{case_frensics, jdbcType=VARCHAR}
+              and forensics_type=#{forensicsType, jdbcType=INTEGER}
+            group by case_forensics
+        )b
+        on a.case_forensics = b.case_forensics
     </insert>
-    <select id="listTown" resultType="model.region"></select>
-    <select id="listVillage" resultType="model.region"></select>
-    <select id="searchByForensics" resultType="java.lang.Integer"></select>
-    <select id="searchByForensicsType" resultType="java.lang.String"></select>
+    <select id="listTown" resultType="model.region">
+        SELECT id, town, village FROM region
+        WHERE id like '%00'
+    </select>
+    <select id="listVillage" resultType="model.region">
+        SELECT id, town, village FROM region
+        WHERE id not like '%00'
+    </select>
+    <select id="searchByForensics" parameterType="String" resultType="int">
+        SELECT case_code FROM settlement_of_claims WHERE case_forensics = #{caseForensics, jdbcType=VARCHAR}
+    </select>
+    <select id="searchByForensicsType" parameterType="Integer" resultType="Integer">
+      SELECT species FROM forensics_type WHERE id = #{forensicsType, jdbcType=INTEGER}
+    </select>
 </mapper>

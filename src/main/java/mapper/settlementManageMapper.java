@@ -15,14 +15,9 @@ import java.util.Map;
 */
 public interface settlementManageMapper {
     List<region> listTown();
-
     List<region> listVillage();
-
     void setUpCase(Map<Object, Object> map);
-
     void forensicsUpload(Map<Object, Object> map);
-
     int searchByForensics(String caseForensics);
-
     String searchByForensicsType(int forensicsType);
 }

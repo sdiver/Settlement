@@ -58,7 +58,7 @@ public class userOperateController {
      *@author: Sdiver
      *@Date: 2/28/17 3:39 PM
      */
-    @RequestMapping(value = {"/login"}, method = {RequestMethod.POST}, produces = {"application/json; charset = utf-8"})
+    @RequestMapping(value = {"/login"}, method = {RequestMethod.POST}, produces = "application/json; charset=utf-8")
     public @ResponseBody Map<Object, Object> login(HttpServletRequest request) throws Exception{
         String userName = request.getParameter("userName");
         String userPassword = request.getParameter("userPassword");
@@ -73,7 +73,7 @@ public class userOperateController {
      *@author: Sdiver
      *@Date: 2/28/17 3:44 PM
      */
-    @RequestMapping(value = {"/changePwd"}, method = {RequestMethod.POST}, produces = {"application/json; charset = utf-8"})
+    @RequestMapping(value = {"/changePwd"}, method = {RequestMethod.POST}, produces = "application/json; charset=utf-8")
     public @ResponseBody Map<Object, Object> changePwd(HttpServletRequest request) throws Exception{
         int userId = Integer.parseInt(request.getParameter("userId"));
         String userPassword = request.getParameter("userPassword");
@@ -89,7 +89,7 @@ public class userOperateController {
      *@author: Sdiver
      *@Date: 2/28/17 3:48 PM
      */
-    @RequestMapping(value = {"/checkToken"}, method = {RequestMethod.POST}, produces = {"application/json; charset = utf-8"})
+    @RequestMapping(value = {"/checkToken"}, method = {RequestMethod.POST}, produces  = "application/json; charset=utf-8")
     public @ResponseBody int checkToken(HttpServletRequest request) throws Exception{
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
@@ -104,7 +104,7 @@ public class userOperateController {
      *@author: Sdiver
      *@Date: 2/28/17 4:02 PM
      */
-    @RequestMapping(value = {"/modifyInfo"}, method = {RequestMethod.POST}, produces = {"application/json; charset = utf-8"})
+    @RequestMapping(value = {"/modifyInfo"}, method = {RequestMethod.POST}, produces = "application/json; charset=utf-8")
     public @ResponseBody Map<Object, Object> modifyInfo(HttpServletRequest request) throws Exception{
         int userId = Integer.parseInt(request.getParameter("userId"));
         String phoneNumber = request.getParameter("phoneNumber");

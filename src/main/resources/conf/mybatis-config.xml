@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <typeAliases>
    		 <typeAlias alias="user_info" type="model.user_info"/>
          <typeAlias alias="authorityVo" type="model.authorityVo"/>
+         <typeAlias alias="region" type="model.region" />
     </typeAliases>
     <!-- 映射map -->
     <!-- 映射map -->

@@ -7,6 +7,9 @@
 * @version V1.0   
 */
 package model;
+
+import java.math.BigInteger;
+
 /**   
 * @Title: user_info
 * @Package model 
@@ -19,7 +22,7 @@ public class user_info{
     private int user_id;
     private String user_name;
     private String user_ch_name;
-    private int phone_number;
+    private BigInteger phone_number;
     private int user_type_id;
     private String user_type;
     private int work_area_id;
@@ -39,7 +42,7 @@ public class user_info{
         return user_ch_name;
     }
 
-    public int getPhone_number() {
+    public BigInteger getPhone_number() {
         return phone_number;
     }
 
@@ -67,7 +70,7 @@ public class user_info{
         this.user_ch_name = user_ch_name;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(BigInteger phone_number) {
         this.phone_number = phone_number;
     }
 

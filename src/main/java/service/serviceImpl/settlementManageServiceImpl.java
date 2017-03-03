@@ -110,4 +110,13 @@ public class settlementManageServiceImpl implements settlementManageService {
         result.put("result", 1);
         return result;
     }
+
+    public Map<Object, Object> deleteForensics(String caseForensics, int forensicsType) {
+
+        return null;
+    }
+
+    public Map<Object, Object> deleteSettlement(int caseCode) {
+        return null;
+    }
 }

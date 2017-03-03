@@ -20,4 +20,8 @@ public interface settlementManageService {
 
     Map<Object,Object> forensicsUpload(String forensics, String caseForensics, int forensicsType,
                                        String forensicsContext, int lostAmount, int lostWeight);
+
+    Map<Object,Object> deleteForensics(String caseForensics, int forensicsType);
+
+    Map<Object,Object> deleteSettlement(int caseCode);
 }

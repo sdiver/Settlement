@@ -120,5 +120,36 @@ public class settlementManageController {
         map.put("result", 0);
         return map;
     }
+    @RequestMapping(value = "/deleteForensics", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> deleteForensics(HttpServletRequest request) throws Exception {
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        String caseForensics = request.getParameter("caseForensics");
+        int forensicsType = Integer.parseInt(request.getParameter("forensicsType"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.deleteForensics(caseForensics, forensicsType);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+    @RequestMapping(value = "/deleteSettlement", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> deleteSettlement(HttpServletRequest request) throws Exception {
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.deleteSettlement(caseCode);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
 
 }

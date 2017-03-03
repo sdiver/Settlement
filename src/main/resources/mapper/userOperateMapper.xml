@@ -33,7 +33,7 @@
 	<update id="updateCode" parameterType="map">
 		UPDATE user_info
 		SET active_code = #{activeCode, jdbcType = VARCHAR}
-		WHERE user_id = #{userId, jdbcType = int}
+		WHERE user_id = #{userId, jdbcType = INTEGER}
 	</update>
 	<select id="listAuthority" parameterType="int" resultType="authorityVo">
 		SELECT a.authority_id authorityId,COUNT(b.authority_id) ifAuthority FROM
@@ -71,6 +71,6 @@
 	<update id="updateUser" parameterType="int">
 		UPDATE user_info
 		SET user_modify = sysdate()
-		WHERE user_id = #{userId}
+		WHERE user_id = #{userId, jdbcType = INTEGER}
 	</update>
 </mapper>
