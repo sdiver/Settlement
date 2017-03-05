@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.contactMapper">
+    <insert id="addPoliceContact">
+        INSERT INTO contact_for_police(region_id, phone_number, police_station_name)
+        VALUES (#{regionId, jdbcType = INTEGER},
+          #{phoneNumber, jdbcType = INTEGER},
+          #{policeStationName, jdbcType = VARCHAR})
+    </insert>
+    <update id="modifyPoliceContact">
+        UPDATE contact_for_police
+        SET #{regionId, jdbcType = INTEGER},
+          #{phoneNumber, jdbcType = INTEGER},
+          #{policeStationName, jdbcType = VARCHAR}
+        WHERE id = #{id, jdbcType = INTEGER}
+    </update>
+    <delete id="deletePoliceContact">
+        DELETE FROM contact_for_police
+        WHERE id = #{id, jdbcType = INTEGER}
+    </delete>
+    <select id="listContact" resultType="model.contact">
+        SELECT id, region_id, phone_number, police_station_name
+        FROM contact_for_police
+    </select>
+    <select id="listnonContact" resultType="model.contact">
+        SELECT user_id id, region_id, phone_number, user_ch_name police_station_name, user_type_id type
+        FROM user_info
+    </select>
+</mapper>
