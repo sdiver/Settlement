@@ -120,6 +120,29 @@ public class settlementManageController {
         map.put("result", 0);
         return map;
     }
+    @RequestMapping(value = "/forensicsUpdate", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> forensicsUpdate(HttpServletRequest request) throws Exception {
+        logger.debug("TEST");
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        String forensics = request.getParameter("forensics");
+        String caseForensics = request.getParameter("caseForensics");
+        int forensicsId = Integer.parseInt(request.getParameter("forensicsId"));
+        int forensicsType = Integer.parseInt(request.getParameter("forensicsType"));
+        String forensicsContext = request.getParameter("forensicsContext");
+        int lostAmount = Integer.parseInt(request.getParameter("lostAmount"));
+        int lostWeight = Integer.parseInt(request.getParameter("lostWeight"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.forensicsUpdate(forensics, caseForensics, forensicsId,
+                    forensicsType, forensicsContext, lostAmount, lostWeight);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
     @RequestMapping(value = "/deleteForensics", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody
     Map<Object, Object> deleteForensics(HttpServletRequest request) throws Exception {
@@ -146,6 +169,53 @@ public class settlementManageController {
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
             map = settlementManageservice.deleteSettlement(caseCode);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+    @RequestMapping(value = "/report", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> report(HttpServletRequest request) throws Exception {
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.report(caseCode);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+    @RequestMapping(value = "/sendBack", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> sendBack(HttpServletRequest request) throws Exception {
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.sendBack(caseCode);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+    @RequestMapping(value = "/caseExpected", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> caseExpected(HttpServletRequest request) throws Exception {
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        String amountOfPay = request.getParameter("amountOfPay");
+        String id = request.getParameter("id");
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.caseExpected(caseCode, amountOfPay, id);
             return map;
         }
         map.put("result", 0);

@@ -11,6 +11,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
    		 <typeAlias alias="user_info" type="model.user_info"/>
          <typeAlias alias="authorityVo" type="model.authorityVo"/>
          <typeAlias alias="region" type="model.region" />
+         <typeAlias alias="settlementStatistics" type="model.settlementStatistics" />
+         <typeAlias alias="settleInfo" type="model.settleInfo" />
+         <typeAlias alias="caseInfo" type="model.caseInfo" />
+         <typeAlias alias="contact" type="model.contact" />
     </typeAliases>
     <!-- 映射map -->
     <!-- 映射map -->

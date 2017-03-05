@@ -24,4 +24,12 @@ public interface settlementManageService {
     Map<Object,Object> deleteForensics(String caseForensics, int forensicsType);
 
     Map<Object,Object> deleteSettlement(int caseCode);
+
+    Map<Object,Object> report(int caseCode);
+
+    Map<Object,Object> sendBack(int caseCode);
+
+    Map<Object,Object> caseExpected(int caseCode, String amountOfPay, String id);
+
+    Map<Object,Object> forensicsUpdate(String forensics, String caseForensics, int forensicsId, int forensicsType, String forensicsContext, int lostAmount, int lostWeight);
 }

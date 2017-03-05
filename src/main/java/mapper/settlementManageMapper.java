@@ -20,4 +20,11 @@ public interface settlementManageMapper {
     void forensicsUpload(Map<Object, Object> map);
     int searchByForensics(String caseForensics);
     String searchByForensicsType(int forensicsType);
+    void deleteForensics(Map<Object, Object> map);
+    void deleteSettlement(int caseCode);
+    String findByCaseCode(int caseCode);
+    void deleteEveryForensics(String caseForensics);
+    void paySettle(Map<Object, Object> map);
+    void caseExpected(Map<Object, Object> map);
+    void forensicsUpdate(Map<Object, Object> info);
 }

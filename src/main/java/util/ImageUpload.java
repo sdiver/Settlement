@@ -21,8 +21,8 @@ import java.util.Map;
 */
 public class ImageUpload {
     public Map<String,Object> upload(String picStr, int caseCode, String caseType) throws IOException{
-        String casePath = "/etc/apache-tomcat-8.0.32/webapps/upload/"+caseCode+"/"+caseType;
-        String miniCasePath = "/etc/apache-tomcat-8.0.32/webapps/miniupload/"+caseCode+"/"+caseType;
+        String casePath = globalV.MainUrl+caseCode+"/"+caseType;
+        String miniCasePath = globalV.miniMainUrl+caseCode+"/"+caseType;
         File file =new File(casePath);
         if  (!file.exists()  && !file.isDirectory()){
             file.mkdir();
@@ -59,8 +59,8 @@ public class ImageUpload {
                 ImageIO.write(img_scale,"jpg",out2);
                 out2.flush();
                 out2.close();
-                String imgURL = "http://210.13.199.111/upload/"+caseCode+"/"+caseType+"/"+nowTime+".jpg";
-                String minimgURL = "http://210.13.199.111/miniupload/"+caseCode+"/"+caseType+"/mini"+nowTime+".jpg";
+                String imgURL = globalV.url+caseCode+"/"+caseType+"/"+nowTime+".jpg";
+                String minimgURL = globalV.miniurl+caseCode+"/"+caseType+"/mini"+nowTime+".jpg";
                 map.put("MSG", "SUCCESS");
                 map.put("URL", imgURL);
                 map.put("miniURL", minimgURL);

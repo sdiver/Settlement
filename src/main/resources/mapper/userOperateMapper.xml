@@ -51,10 +51,15 @@
 		WHERE user_id = #{userId, jdbcType = INTEGER}
 		AND active_code = #{activeCode, jdbcType = VARCHAR}
 	</select>
-	<select id="checkPwd" resultType="java.lang.Integer">
+	<select id="checkPwd" parameterType="map" resultType="java.lang.Integer">
 		SELECT count(*) FROM user_info
 		WHERE user_id = #{userId, jdbcType = INTEGER}
 		AND user_password = #{password, jdbcType = VARCHAR}
+	</select>
+	<select id="findUserByUserId" parameterType="int" resultType="model.user_info">
+		SELECT user_type_id, work_area_id FROM user_info
+		WHERE user_id = #{userId, jdbcType = INTEGER}
+
 	</select>
 	<update id="modifyInfo" parameterType="map">
 		UPDATE user_info
