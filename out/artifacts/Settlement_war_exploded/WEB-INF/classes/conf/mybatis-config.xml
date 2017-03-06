@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- author Shixiangren
+	 since 2016.2.14
+	 配置mybatis -->
+<configuration>
+        <!-- 命名空间 -->
+    <typeAliases>
+   		 <typeAlias alias="user_info" type="model.user_info"/>
+         <typeAlias alias="authorityVo" type="model.authorityVo"/>
+         <typeAlias alias="region" type="model.region" />
+         <typeAlias alias="settlementStatistics" type="model.settlementStatistics" />
+         <typeAlias alias="settleinfo" type="model.settleinfo" />
+         <typeAlias alias="caseInfo" type="model.caseInfo" />
+         <typeAlias alias="contact" type="model.contact" />
+         <typeAlias alias="forensicsInfo" type="model.forensicsInfo" />
+    </typeAliases>
+    <!-- 映射map -->
+    <!-- 映射map -->
+    <mappers>
+    </mappers>
+</configuration>
