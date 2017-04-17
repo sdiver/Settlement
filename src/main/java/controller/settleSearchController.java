@@ -11,6 +11,7 @@ import service.settlementSearchService;
 import service.userOperateService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -57,6 +58,23 @@ public class settleSearchController {
         map.put("result", 0);
         return map;
     }
+    @RequestMapping(value = "/mySettles", method = RequestMethod.POST,
+            produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> mySettles(HttpServletRequest request) throws Exception {
+        logger.debug("TEST");
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        int status = Integer.parseInt(request.getParameter("status"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementSearchservice.mySettles(userId, status);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
     @RequestMapping(value = "/settleinfo", method = RequestMethod.POST,
             produces = "application/json; charset=utf-8")
     public @ResponseBody
@@ -65,7 +83,7 @@ public class settleSearchController {
         Map<Object, Object> map = new HashMap<Object, Object>();
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
-        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        String caseCode = request.getParameter("caseCode");
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
             map = settlementSearchservice.settleinfo(caseCode, userId);
@@ -74,4 +92,22 @@ public class settleSearchController {
         map.put("result", 0);
         return map;
     }
+    @RequestMapping(value = "/downloadFile", method = RequestMethod.POST,
+            produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> downloadFile(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        logger.debug("TEST");
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        String caseCode = request.getParameter("caseCode");
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementSearchservice.downloadFile(caseCode, response);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+
 }

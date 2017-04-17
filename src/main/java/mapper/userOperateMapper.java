@@ -21,7 +21,7 @@ public interface userOperateMapper {
     List<authorityVo> listAuthority(int roleId);
     int checkPwd(Map<Object, Object> map);
     void changePwd(Map<Object, Object> map);
-    int checkToken(Map<Object, Object> map);
+    String checkToken(int userId);
     void modifyInfo(Map<Object, Object> map);
     void updateUser(int userId);
     user_info findUserByUserId(int userId);

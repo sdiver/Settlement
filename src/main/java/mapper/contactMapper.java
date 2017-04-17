@@ -1,6 +1,7 @@
 package mapper;
 
 import model.contact;
+import model.contactList;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,13 @@ public interface contactMapper {
 
     void deletePoliceContact( int id);
 
-    List<contact> listContact();
+    List<contactList> listContact();
 
-    List<contact> listnonContact();
+    List<contactList> listregion();
+
+    int getPerson();
+
+    List<contact> listuser(Map<Object, Object> map);
+
+    List<contact> listpoliceuser(Map<Object, Object> map);
 }

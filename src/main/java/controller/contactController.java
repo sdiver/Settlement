@@ -29,7 +29,7 @@ public class contactController {
         Map<Object, Object> map = new HashMap<Object, Object>();
         int userId = Integer.parseInt(request.getParameter("userId"));
         int regionId = Integer.parseInt(request.getParameter("regionId"));
-        int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
+        String phoneNumber = request.getParameter("phoneNumber");
         String token = request.getParameter("token");
         String policeStationName = request.getParameter("policeStationName");
         int check = userOperateservice.checkToken(userId, token);
@@ -48,7 +48,7 @@ public class contactController {
         int id = Integer.parseInt(request.getParameter("id"));
         int userId = Integer.parseInt(request.getParameter("userId"));
         int regionId = Integer.parseInt(request.getParameter("regionId"));
-        int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
+        String phoneNumber = request.getParameter("phoneNumber");
         String token = request.getParameter("token");
         String policeStationName = request.getParameter("policeStationName");
         int check = userOperateservice.checkToken(userId, token);
@@ -85,6 +85,23 @@ public class contactController {
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
             map = contactservice.listContact();
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+    @RequestMapping(value = "/listuser", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> listuser(HttpServletRequest request) throws Exception {
+        logger.debug("TEST");
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        int regionId = Integer.parseInt(request.getParameter("regionId"));
+        int type = Integer.parseInt(request.getParameter("type"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = contactservice.listuser(regionId, type);
             return map;
         }
         map.put("result", 0);

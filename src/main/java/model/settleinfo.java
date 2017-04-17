@@ -3,8 +3,8 @@ package model;
 import java.util.Date;
 
 public class settleinfo {
-    private int rowno;
-    private int case_code;
+    private String rowno;
+    private String case_code;
     private int heading;
     private String caseType;
     private String town;
@@ -16,28 +16,29 @@ public class settleinfo {
     private String caseStatus;
     private String zip_url;
     private int sum_pay;
+    private String headingConcat;
 
-    public String getZip_url() {
-        return zip_url;
+    public String getHeadingConcat() {
+        return headingConcat;
     }
 
-    public void setZip_url(String zip_url) {
-        this.zip_url = zip_url;
+    public void setHeadingConcat(String headingConcat) {
+        this.headingConcat = headingConcat;
     }
 
-    public int getRowno() {
+    public String getRowno() {
         return rowno;
     }
 
-    public void setRowno(int rowno) {
+    public void setRowno(String rowno) {
         this.rowno = rowno;
     }
 
-    public int getCase_code() {
+    public String getCase_code() {
         return case_code;
     }
 
-    public void setCase_code(int case_code) {
+    public void setCase_code(String case_code) {
         this.case_code = case_code;
     }
 
@@ -113,29 +114,19 @@ public class settleinfo {
         this.caseStatus = caseStatus;
     }
 
+    public String getZip_url() {
+        return zip_url;
+    }
+
+    public void setZip_url(String zip_url) {
+        this.zip_url = zip_url;
+    }
+
     public int getSum_pay() {
         return sum_pay;
     }
 
     public void setSum_pay(int sum_pay) {
         this.sum_pay = sum_pay;
-    }
-
-    @Override
-    public String toString() {
-        return "settleinfo{" +
-                "rowno=" + rowno +
-                ", case_code=" + case_code +
-                ", heading=" + heading +
-                ", caseType='" + caseType + '\'' +
-                ", town='" + town + '\'' +
-                ", village='" + village + '\'' +
-                ", case_create=" + case_create +
-                ", case_reporter='" + case_reporter + '\'' +
-                ", case_status=" + case_status +
-                ", caseSchedule='" + caseSchedule + '\'' +
-                ", caseStatus='" + caseStatus + '\'' +
-                ", sum_pay=" + sum_pay +
-                '}';
     }
 }

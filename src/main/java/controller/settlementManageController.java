@@ -71,10 +71,10 @@ public class settlementManageController {
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
         int caseRegionId = Integer.parseInt(request.getParameter("caseRegionId"));
-        int caseCellphoneNumber = Integer.parseInt(request.getParameter("caseCellphoneNumber"));
+        long caseCellphoneNumber = Long.parseLong(request.getParameter("caseCellphoneNumber"));
         int isHousehold = Integer.parseInt(request.getParameter("isHousehold"));
         int isOwner = Integer.parseInt(request.getParameter("isOwner"));
-        int case_status = Integer.parseInt(request.getParameter("case_status"));
+        int case_status = 0;
         String caseAddress = request.getParameter("caseAddress");
         String caseReporter = request.getParameter("caseReporter");
         String caseIdentity = request.getParameter("caseIdentity");
@@ -85,6 +85,32 @@ public class settlementManageController {
         if(check == 1) {
             map = settlementManageservice.setUpCase(caseRegionId, caseCellphoneNumber, isHousehold, isOwner,
                     case_status, caseAddress, caseReporter, caseIdentity, caseFormatTime, userId);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+    @RequestMapping(value = "/modifyCase", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> modifyCase(HttpServletRequest request) throws Exception {
+        logger.debug("TEST");
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        String caseCode = request.getParameter("caseCode");
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        long caseCellphoneNumber = Long.parseLong(request.getParameter("caseCellphoneNumber"));
+        int isHousehold = Integer.parseInt(request.getParameter("isHousehold"));
+        int isOwner = Integer.parseInt(request.getParameter("isOwner"));
+        String caseAddress = request.getParameter("caseAddress");
+        String caseReporter = request.getParameter("caseReporter");
+        String caseIdentity = request.getParameter("caseIdentity");
+        String caseTime = request.getParameter("caseTime");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date caseFormatTime = new Date(dateFormat.parse(caseTime).getTime());
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.modifyCase(caseCode, caseCellphoneNumber, isHousehold, isOwner,
+                    caseAddress, caseReporter, caseIdentity, caseFormatTime, userId);
             return map;
         }
         map.put("result", 0);
@@ -143,6 +169,25 @@ public class settlementManageController {
         map.put("result", 0);
         return map;
     }
+    @RequestMapping(value = "/deletePhoto", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> deletePhoto(HttpServletRequest request) throws Exception {
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        String caseForensics = request.getParameter("caseForensics");
+        int forensicsType = Integer.parseInt(request.getParameter("forensicsType"));
+        String url = request.getParameter("url");
+        int forensicsId = Integer.parseInt(request.getParameter("forensicsId"));
+        int photoId = Integer.parseInt(request.getParameter("photoId"));
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.deletePhoto(caseForensics, forensicsType, forensicsId, photoId, url);
+            return map;
+        }
+        map.put("result", 0);
+        return null;
+    }
     @RequestMapping(value = "/deleteForensics", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     public @ResponseBody
     Map<Object, Object> deleteForensics(HttpServletRequest request) throws Exception {
@@ -151,9 +196,10 @@ public class settlementManageController {
         String token = request.getParameter("token");
         String caseForensics = request.getParameter("caseForensics");
         int forensicsType = Integer.parseInt(request.getParameter("forensicsType"));
+        int forensicsId = Integer.parseInt(request.getParameter("forensicsId"));
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
-            map = settlementManageservice.deleteForensics(caseForensics, forensicsType);
+            map = settlementManageservice.deleteForensics(caseForensics, forensicsType, forensicsId);
             return map;
         }
         map.put("result", 0);
@@ -165,7 +211,7 @@ public class settlementManageController {
         Map<Object, Object> map = new HashMap<Object, Object>();
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
-        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        String caseCode = request.getParameter("caseCode");
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
             map = settlementManageservice.deleteSettlement(caseCode);
@@ -180,7 +226,7 @@ public class settlementManageController {
         Map<Object, Object> map = new HashMap<Object, Object>();
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
-        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        String caseCode = request.getParameter("caseCode");
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
             map = settlementManageservice.report(caseCode);
@@ -195,10 +241,28 @@ public class settlementManageController {
         Map<Object, Object> map = new HashMap<Object, Object>();
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
-        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        String caseCode = request.getParameter("caseCode");
         int check = userOperateservice.checkToken(userId, token);
         if(check == 1) {
             map = settlementManageservice.sendBack(caseCode);
+            return map;
+        }
+        map.put("result", 0);
+        return map;
+    }
+    @RequestMapping(value = "/sendBackReason", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public @ResponseBody
+    Map<Object, Object> sendBackReason(HttpServletRequest request) throws Exception {
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String token = request.getParameter("token");
+        int forensicsId = Integer.parseInt(request.getParameter("forensicsId"));
+        String caseForensics = request.getParameter("caseForensics");
+        int photoId = Integer.parseInt(request.getParameter("photoId"));
+        String sendBackReason = request.getParameter("sendBackReason");
+        int check = userOperateservice.checkToken(userId, token);
+        if(check == 1) {
+            map = settlementManageservice.sendBackReason(forensicsId, caseForensics, photoId, sendBackReason);
             return map;
         }
         map.put("result", 0);
@@ -210,7 +274,7 @@ public class settlementManageController {
         Map<Object, Object> map = new HashMap<Object, Object>();
         int userId = Integer.parseInt(request.getParameter("userId"));
         String token = request.getParameter("token");
-        int caseCode = Integer.parseInt(request.getParameter("caseCode"));
+        String caseCode = request.getParameter("caseCode");
         String amountOfPay = request.getParameter("amountOfPay");
         String id = request.getParameter("id");
         int check = userOperateservice.checkToken(userId, token);

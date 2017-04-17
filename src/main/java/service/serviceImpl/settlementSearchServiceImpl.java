@@ -3,15 +3,21 @@ package service.serviceImpl;
 import mapper.settlementSearchMapper;
 import mapper.userOperateMapper;
 import model.*;
+import org.apache.tools.zip.ZipOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.settlementSearchService;
+import util.FileToZip;
+import util.downFile;
 import util.globalV;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service("settlementSearchServiceImpl")
 public class settlementSearchServiceImpl implements settlementSearchService {
@@ -24,7 +30,14 @@ public class settlementSearchServiceImpl implements settlementSearchService {
         Map<Object, Object> map = new HashMap<Object, Object>();
         Map<Object, Object> result = new HashMap<Object, Object>();
         int pageMinNum = ( Page - 1 ) * pagePerNum;
-        String areaType = String.valueOf(regionId);
+        String areaType = "";
+        int regionTransation = 0;
+        if(regionId % 100 == 0){
+            regionTransation = regionId / 100;
+        }
+        if(regionId != 0){
+            areaType = areaType + regionTransation;
+        }
         map.put("caseStartTime", caseStartTime);
         map.put("caseEndTime", caseEndTime);
         map.put("areaType", areaType);
@@ -46,7 +59,7 @@ public class settlementSearchServiceImpl implements settlementSearchService {
                 }
                 break;
             case 2:
-                if(status > 0 || townId == regionId / 100){
+                if(status > 0 && townId == regionId / 100){
                     settlementStatisticsList = settlementSearchmapper.settleStatistics(map);
                     settleinfoList = settlementSearchmapper.settleSearch(map);
                 }
@@ -54,6 +67,7 @@ public class settlementSearchServiceImpl implements settlementSearchService {
             case 3:
                 if(townId == regionId / 100){
                     settlementStatisticsList = settlementSearchmapper.settleStatistics(map);
+                    settlementStatisticsList.setSum_pay(0);
                     settleinfoList = settlementSearchmapper.settleSearch(map);
                 }
                 break;
@@ -63,14 +77,16 @@ public class settlementSearchServiceImpl implements settlementSearchService {
                     settleinfoList = settlementSearchmapper.settleSearch(map);
                 }
                 break;
-            }
-        settleinfoList = substitute(settleinfoList, typeId);
+        }
+        if(settleinfoList != null) {
+            settleinfoList = substitute(settleinfoList, typeId);
+        }
         result.put("settlementStatistics", settlementStatisticsList);
         result.put("settleinfoList", settleinfoList);
         return result;
     }
 
-    public Map<Object, Object> settleinfo(int caseCode, int userId) {
+    public Map<Object, Object> settleinfo(String caseCode, int userId) {
         Map<Object, Object> map = new HashMap<Object, Object>();
         caseInfo caseinfo = settlementSearchmapper.settleinfo(caseCode);
         switch (caseinfo.getCase_status()) {
@@ -107,8 +123,60 @@ public class settlementSearchServiceImpl implements settlementSearchService {
         map.put("caseinfo",caseinfo);
         return map;
     }
+
+    public Map<Object, Object> mySettles(int userId, int status) {
+        Map<Object, Object> result = new HashMap<Object, Object>();
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        map.put("userId", userId);
+        map.put("status", status);
+        List<caseInfo> caseInfoList = settlementSearchmapper.mySettles(map);
+        result.put("caseInfoList", caseInfoList);
+        return result;
+    }
+
+    public Map<Object, Object> downloadFile(String caseCode, HttpServletResponse response){
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        Map<Object, Object> result = new HashMap<Object, Object>();
+        String[] caseCoder = caseCode.split(",");
+        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+        String name = df.format(new Date());
+        String zipFilePath = globalV.MainUrl + name +".zip";
+        FileToZip zipfile = new FileToZip(zipFilePath);
+        File zipFile = new File(zipFilePath);
+        ZipOutputStream out = null;
+        try {
+            out = new ZipOutputStream(new FileOutputStream(zipFile));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        for(int i=0; i < caseCoder.length; i++){
+            caseInfo settle = settlementSearchmapper.settleinfo(caseCoder[i]);
+            if(settle.getCase_status() != 3){
+                map.put("result", 0);
+                return map;
+            }
+            String sourceFilePath = globalV.MainUrl + caseCoder[i] +".zip";
+            try {
+                zipfile.compress(sourceFilePath, out);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        downFile file = new downFile();
+        try {
+            file.downloadFile(zipFilePath, response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        File casePathFile = new File(zipFilePath);
+        file.deleteFile(casePathFile);
+        result.put("result", 1);
+        return result;
+    }
+
     private List<settleinfo> substitute(List<settleinfo> settleinfoList, int typeId){
-        List<settleinfo> settleinfos = null;
+        List<settleinfo> settleinfos = new ArrayList<settleinfo>();
+        settleinfoList.size();
         for (settleinfo aSettleinfoList : settleinfoList) {
             switch (aSettleinfoList.getCase_status()) {
                 case 3:
@@ -124,23 +192,29 @@ public class settlementSearchServiceImpl implements settlementSearchService {
                     aSettleinfoList.setCaseStatus(globalV.submit);
                     break;
             }
-            switch (aSettleinfoList.getHeading()) {
-                case 1:
-                    aSettleinfoList.setCaseType(globalV.motorcycle);
-                    break;
-                case 2:
-                    aSettleinfoList.setCaseType(globalV.electrombile);
-                    break;
-                case 3:
-                    aSettleinfoList.setCaseType(globalV.jewelry);
-                    break;
-                case 4:
-                    aSettleinfoList.setCaseType(globalV.animals);
-                    break;
-                case 5:
-                    aSettleinfoList.setCaseType(globalV.others);
-                    break;
+            String[] i = aSettleinfoList.getHeadingConcat().split(",");
+            String info = "";
+            for(int j =0; j<i.length; j++) {
+                int h = Integer.parseInt(i[j]);
+                switch (h) {
+                    case 1:
+                        info = info + globalV.motorcycle+";";
+                        break;
+                    case 2:
+                        info = info + globalV.electrombile+";";
+                        break;
+                    case 3:
+                        info = info + globalV.jewelry+";";
+                        break;
+                    case 4:
+                        info = info + globalV.animals+";";
+                        break;
+                    case 5:
+                        info = info + globalV.others+";";
+                        break;
+                }
             }
+            aSettleinfoList.setCaseType(info);
             switch (typeId) {
                 case 1:
                     aSettleinfoList.setCaseStatus("");

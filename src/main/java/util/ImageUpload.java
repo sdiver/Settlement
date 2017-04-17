@@ -20,16 +20,16 @@ import java.util.Map;
 * @version V1.0   
 */
 public class ImageUpload {
-    public Map<String,Object> upload(String picStr, int caseCode, String caseType) throws IOException{
+    public Map<String,Object> upload(String picStr, String caseCode, String caseType) throws IOException{
         String casePath = globalV.MainUrl+caseCode+"/"+caseType;
         String miniCasePath = globalV.miniMainUrl+caseCode+"/"+caseType;
         File file =new File(casePath);
         if  (!file.exists()  && !file.isDirectory()){
-            file.mkdir();
+            file.mkdirs();
         }
         File minifile =new File(miniCasePath);
         if  (!minifile.exists() && !minifile.isDirectory()){
-            minifile.mkdir();
+            minifile.mkdirs();
         }
         picStr = picStr.replaceAll(" ","+");
         Map<String,Object> map = new HashMap<String,Object>();
@@ -53,7 +53,7 @@ public class ImageUpload {
                 BufferedImage img = ImageIO.read(new File(imgFilePath));
                 int width = img.getWidth(null); // 得到源图宽
                 int height = img.getHeight(null); // 得到源图长
-                BufferedImage img_scale = is.imageZoomOut(img, width / 2, height / 2, true);
+                BufferedImage img_scale = is.imageZoomOut(img, width / 8, height / 8, true);
                 String imgFilePath2 = miniCasePath+"/mini"+nowTime+".jpg";// 新生成的图片
                 FileOutputStream out2 = new FileOutputStream(imgFilePath2);
                 ImageIO.write(img_scale,"jpg",out2);
@@ -73,6 +73,8 @@ public class ImageUpload {
             }
         }else{
             map.put("MSG", "no pic");
+            map.put("URL", null);
+            map.put("miniURL", null);
         }
         return map;
     }

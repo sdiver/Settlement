@@ -1,75 +1,80 @@
 package util;
 
-import java.io.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.taskdefs.Zip;
+import org.apache.tools.ant.types.FileSet;
+import org.apache.tools.zip.ZipEntry;
+import org.apache.tools.zip.ZipOutputStream;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public final class FileToZip {
+    private File zipFile;
+    public FileToZip(String zipFilePath) {
+        zipFile = new File(zipFilePath);
+    }
+    public void compress(String srcPathName, ZipOutputStream out) throws IOException {
+        File srcdir = new File(srcPathName);
+        if (srcdir.isDirectory()) {
+            if (!srcdir.exists())
+                throw new RuntimeException(srcPathName + "不存在！");
 
-    private FileToZip(){}
-
-    /**
-     * 将存放在sourceFilePath目录下的源文件，打包成fileName名称的zip文件，并存放到zipFilePath路径下
-     * @param sourceFilePath :待压缩的文件路径
-     * @param zipFilePath :压缩后存放路径
-     * @param fileName :压缩后文件的名称
-     */
-    public static boolean fileToZip(String sourceFilePath,String zipFilePath,String fileName) {
-        boolean flag = false;
-        File sourceFile = new File(sourceFilePath);
-        FileInputStream fis;
-        BufferedInputStream bis = null;
-        FileOutputStream fos;
-        ZipOutputStream zos = null;
-
-        if (!sourceFile.exists()) {
-            System.out.println("待压缩的文件目录：" + sourceFilePath + "不存在.");
-        } else {
-            try {
-                File zipFile = new File(zipFilePath + "/" + fileName + ".zip");
-                if (zipFile.exists()) {
-                    System.out.println(zipFilePath + "目录下存在名字为:" + fileName + ".zip" + "打包文件.");
-                } else {
-                    File[] sourceFiles = sourceFile.listFiles();
-                    if (null == sourceFiles || sourceFiles.length < 1) {
-                        System.out.println("待压缩的文件目录：" + sourceFilePath + "里面不存在文件，无需压缩.");
-                    } else {
-                        fos = new FileOutputStream(zipFile);
-                        zos = new ZipOutputStream(new BufferedOutputStream(fos));
-                        byte[] bufs = new byte[1024 * 10];
-                        for (File sourceFile1 : sourceFiles) {
-                            //创建ZIP实体，并添加进压缩包
-                            ZipEntry zipEntry = new ZipEntry(sourceFile1.getName());
-                            zos.putNextEntry(zipEntry);
-                            //读取待压缩的文件并写进压缩包里
-                            fis = new FileInputStream(sourceFile1);
-                            bis = new BufferedInputStream(fis, 1024 * 10);
-                            int read;
-                            while (-1 != (read = bis.read(bufs, 0, 1024 * 10))) {
-                                zos.write(bufs, 0, read);
-                            }
-                        }
-                        flag = true;
-                    }
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                e.printStackTrace();
-                throw new RuntimeException(e);
-            } finally {
-                //关闭流
-                try {
-                    if (null != bis) bis.close();
-                    if (null != zos) zos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    throw new RuntimeException(e);
-                }
-            }
+            Project prj = new Project();
+            Zip zip = new Zip();
+            zip.setProject(prj);
+            zip.setDestFile(zipFile);
+            FileSet fileSet = new FileSet();
+            fileSet.setProject(prj);
+            fileSet.setDir(srcdir);
+            //fileSet.setIncludes("**/*.java"); 包括哪些文件或文件夹 eg:zip.setIncludes("*.java");
+            //fileSet.setExcludes(...); 排除哪些文件或文件夹
+            zip.addFileset(fileSet);
+            zip.execute();
+        }else{
+            doCompress(srcdir, out);
         }
-        return flag;
+    }
+    public void compress(String srcPathName) throws IOException {
+        File srcdir = new File(srcPathName);
+        if (srcdir.isDirectory()) {
+            if (!srcdir.exists())
+                throw new RuntimeException(srcPathName + "不存在！");
+
+            Project prj = new Project();
+            Zip zip = new Zip();
+            zip.setProject(prj);
+            zip.setDestFile(zipFile);
+            FileSet fileSet = new FileSet();
+            fileSet.setProject(prj);
+            fileSet.setDir(srcdir);
+            //fileSet.setIncludes("**/*.java"); 包括哪些文件或文件夹 eg:zip.setIncludes("*.java");
+            //fileSet.setExcludes(...); 排除哪些文件或文件夹
+            zip.addFileset(fileSet);
+            zip.execute();
+        }else{
+            ZipOutputStream out = new ZipOutputStream(new FileOutputStream(zipFile));
+            doCompress(srcdir, out);
+        }
+    }
+    public static void doCompress(File file, ZipOutputStream out) throws IOException{
+        System.out.println(out);
+        System.out.println(1);
+        if( file.exists() ){
+            byte[] buffer = new byte[1024];
+            FileInputStream fis = new FileInputStream(file);
+            out.putNextEntry(new ZipEntry(file.getName()));
+            int len = 0 ;
+            // 读取文件的内容,打包到zip文件
+            while ((len = fis.read(buffer)) > 0) {
+                out.write(buffer, 0, len);
+            }
+            out.flush();
+            out.closeEntry();
+            fis.close();
+        }
     }
 
 }

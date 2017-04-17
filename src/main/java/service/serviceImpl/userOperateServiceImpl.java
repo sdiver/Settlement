@@ -33,15 +33,16 @@ public class userOperateServiceImpl implements userOperateService {
      *@date: 2/28/17
      *@version: V1.0
      */
-    public Map<Object, Object> register(String userName, String userPassword, String userChName, int phoneNumber,
+    public Map<Object, Object> register(String userName, String userPassword, String userChName, String phoneNumber,
                                         int userTypeId, int workAreaId, String workAddress) {
         Map<Object, Object> map = new HashMap<Object, Object>();
         Map<Object, Object> result = new HashMap<Object, Object>();
         String password = encrypt.MD5(userPassword);
+        long phone = Long.parseLong(phoneNumber);
         map.put("userName", userName);
         map.put("password", password);
         map.put("userChName", userChName);
-        map.put("phoneNumber", phoneNumber);
+        map.put("phoneNumber", phone);
         map.put("userTypeId", userTypeId);
         map.put("workAreaId", workAreaId);
         map.put("workAddress", workAddress);
@@ -123,8 +124,11 @@ public class userOperateServiceImpl implements userOperateService {
         Map<Object, Object> result = new HashMap<Object, Object>();
         map.put("userId", userId);
         map.put("token", token);
-        int check = userOperatemapper.checkToken(map);
-        return check;
+        String checkToken = userOperatemapper.checkToken(userId);
+        if(token.equals(checkToken)){
+            return 1;
+        }
+        return 0;
     }
     /**
      *@Title: userOperateServiceImpl

@@ -9,21 +9,47 @@
     </insert>
     <update id="modifyPoliceContact" parameterType="map">
         UPDATE contact_for_police
-        SET #{regionId, jdbcType = INTEGER},
-          #{phoneNumber, jdbcType = INTEGER},
-          #{policeStationName, jdbcType = VARCHAR}
+        SET region_id = #{regionId, jdbcType = INTEGER},
+          phone_number = #{phoneNumber, jdbcType = INTEGER},
+          police_station_name = #{policeStationName, jdbcType = VARCHAR}
         WHERE id = #{id, jdbcType = INTEGER}
     </update>
     <delete id="deletePoliceContact" parameterType="int">
         DELETE FROM contact_for_police
         WHERE id = #{id, jdbcType = INTEGER}
     </delete>
-    <select id="listContact" resultType="model.contact">
-        SELECT id, region_id, phone_number, police_station_name
-        FROM contact_for_police
+    <select id="listContact" resultType="model.contactList">
+        select concat(r.village,'警察局(',count(p.id),')') name, r.id+30000 id,r.id regionId, r.pid pid, count(p.id) countPerson,(select @rn:=3) type from
+        (
+        select village, id,if(id!=1000, if(floor(id/100)*100!=id, floor(id/100)*100+30000,31000),0) pid
+        from region)r left join contact_for_police p
+        on p.region_id = r.id
+        group by r.village, r.id, r.pid
     </select>
-    <select id="listnonContact" resultType="model.contact">
-        SELECT user_id id, region_id, phone_number, user_ch_name police_station_name, user_type_id type
-        FROM user_info
+    <select id="listregion" resultType="model.contactList">
+        select concat(r.village,'综治办(',count(i.user_id),')') name, r.id+10000 id,r.id regionId, r.pid pid, count(i.user_id) countPerson,(select @rn:=1) type from
+        (
+            select village, id,if(id!=1000, if(floor(id/100)*100!=id, floor(id/100)*100+10000,11000),0) pid
+            from region)r left join (select * from user_info where user_type_id !=4) i
+        on r.id = i.work_area_id
+        group by r.village, r.id, r.pid
+    </select>
+    <select id="getPerson" resultType="int">
+        SELECT count(*) from user_info WHERE user_type_id = 4
+    </select>
+    <select id="listuser" parameterType="map" resultType="contact">
+      SELECT user_id id, work_area_id region_id, phone_number, user_ch_name police_station_name,user_type_id type
+      from user_info
+      where work_area_id = #{regionId, jdbcType=INTEGER}
+      <if test="type!=2">
+          AND user_type_id != 4
+      </if>
+        <if test="type==2">
+            AND user_type_id = 4
+        </if>
+    </select>
+    <select id="listpoliceuser" parameterType="map" resultType="contact">
+    select id, region_id, phone_number, police_station_name, (select @rn:=5) type from contact_for_police
+    where region_id = #{regionId, jdbcType=INTEGER}
     </select>
 </mapper>

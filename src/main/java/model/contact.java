@@ -3,7 +3,7 @@ package model;
 public class contact {
     private int id;
     private int region_id;
-    private int phone_number;
+    private String phone_number;
     private String police_station_name;
     private int type;
 
@@ -31,11 +31,11 @@ public class contact {
         this.region_id = region_id;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 

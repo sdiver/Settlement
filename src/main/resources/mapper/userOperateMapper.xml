@@ -36,9 +36,9 @@
 		WHERE user_id = #{userId, jdbcType = INTEGER}
 	</update>
 	<select id="listAuthority" parameterType="int" resultType="authorityVo">
-		SELECT a.authority_id authorityId,COUNT(b.authority_id) ifAuthority FROM
+		SELECT a.authority_id authorityId,COUNT(b.authority_id) ifAthority FROM
 			(SELECT * FROM authority) a
-			LEFT JOIN link_authority_type b ON b.roleid = #{roleId} AND b.authority_id = a.authority_id
+			LEFT JOIN link_authority_type b ON b.roleid = #{roleId, jdbcType=INTEGER} AND b.authority_id = a.authority_id
 		GROUP BY a.authority_id
 	</select>
 	<update id="changePwd" parameterType="map">
@@ -46,10 +46,9 @@
 		SET user_password = #{newPwd, jdbcType = VARCHAR}
 		WHERE user_id = #{userId, jdbcType = INTEGER}
 	</update>
-	<select id="checkToken" parameterType="map" resultType="int">
-		SELECT count(*) FROM user_info
+	<select id="checkToken" parameterType="int" resultType="String">
+		SELECT active_code FROM user_info
 		WHERE user_id = #{userId, jdbcType = INTEGER}
-		AND active_code = #{activeCode, jdbcType = VARCHAR}
 	</select>
 	<select id="checkPwd" parameterType="map" resultType="java.lang.Integer">
 		SELECT count(*) FROM user_info
@@ -63,14 +62,14 @@
 	</select>
 	<update id="modifyInfo" parameterType="map">
 		UPDATE user_info
-		SET
-		<if test="phoneNumber != 0">
-			phone_number = #{phoneNumber, jdbcType = INTEGER},
-		</if>
-		<if test="workAddress != ''">
-			work_address = #{workAddress, jdbcType = VARCHAR},
-		</if>
-		1=1
+		<trim prefix="set" suffixOverrides=",">
+			<if test="phoneNumber != 0">
+				phone_number = #{phoneNumber, jdbcType = INTEGER},
+			</if>
+			<if test="workAddress != ''">
+				work_address = #{workAddress, jdbcType = VARCHAR},
+			</if>
+		</trim>
 		WHERE user_id = #{userId, jdbcType = INTEGER}
 	</update>
 	<update id="updateUser" parameterType="int">

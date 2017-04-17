@@ -14,7 +14,9 @@ public interface settlementSearchMapper {
 
     List<settleinfo> settleSearch(Map<Object, Object> map);
 
-    caseInfo settleinfo(int caseCode);
+    caseInfo settleinfo(String caseCode);
 
     List<forensicsInfo> forensicsInfoList(String case_forensics);
+
+    List<caseInfo> mySettles(Map<Object, Object> map);
 }

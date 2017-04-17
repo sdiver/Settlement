@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="mapper.settlementSearchMapper">
-    <select id="settleinfo" parameterType="int" resultType="caseInfo">
+    <select id="settleinfo" parameterType="String" resultType="caseInfo">
         SELECT s.case_code, s.case_forensics, s.case_create, s.case_address, s.case_time, s.case_reporter,
 	      s.case_cellphone_number, s.case_upload_user, u.user_ch_name, u.phone_number , s.case_status, r.town, r.village,
 	      s.is_household, s.is_owner, s.zip_url
@@ -10,56 +10,62 @@
           AND u.user_id = s.case_upload_user
           AND s.case_region_id = r.id
     </select>
-    <select id="settleSearch" parameterType="map" resultType="model.settleinfo">
-        SELECT a.rowno, a.case_code,a.heading,a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url, a.sum_pay FROM
+    <select id="settleSearch" parameterType="map" resultType="settleinfo">
+        SELECT a.rowno, a.case_code,a.headingConcat, a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url, a.sum_pay FROM
         (
-        select (@rowNO := @rowNo+1) AS rowno, a.case_code,a.heading,a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url, a.sum_pay
-        FROM
-        (
-        select a.case_code,a.heading,a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url, sum(c.amount_of_pay) sum_pay
+        select (@rowNO := @rowNo+1) AS rowno, a.case_code,a.headingConcat, a.ff, a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url, a.sum_pay from(
+        select
+        a.case_code,group_concat(a.heading) headingConcat, group_concat(a.forensics_type) ff, a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url, 	ifnull(sum(a.sum_pay),0) sum_pay FROM (
+        select a.case_code,a.heading, a.forensics_type, a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url, sum(c.amount_of_pay) sum_pay
         FROM(
-            select a.case_code, a.case_region_id, a.town, a.village, a.case_status, a.case_create,a.case_reporter, a.zip_url,
-            f.id, f.case_forensics, f.heading
-            from(
-                select s.case_code, s.case_region_id, s.case_forensics, s.case_status ,r.town, r.village, s.case_create,s.case_reporter, s.zip_url
-                from settlement_of_claims s, region r
-                where
-                <choose>
-                    <when test="status==4">
-                        s.case_status != 0
-                    </when>
-                    <when test="status==5">
-                        (s.case_status = 1 or s.case_status = 2)
-                    </when>
-                    <otherwise>
-                        s.case_status = #{status, jdbcType=INTEGER}
-                    </otherwise>
-                </choose>
-                and s.case_region_id like '${areaType, jdbcType=VARCHAR}%'
-                and s.case_time &gt;= #{caseStartTime, jdbcType=DATE}
-                and s.case_time &lt; #{caseEndTime, jdbcType=DATE}
-                and s.case_region_id = r.id
-                order by s.case_create
-            )a left join (
-              select f.case_forensics, f.id, ff.heading
-              from forensics f, forensics_type ff
-              where f.forensics_type = ff.id)f
-            on f.case_forensics = a.case_forensics
-            <choose>
-                <when test="forensicsType==0">
-                    and f.heading != 0
-                </when>
-                <otherwise>
-                    and f.heading = #{forensicsType, jdbcType=INTEGER}
-                </otherwise>
-            </choose>
+        select a.case_code, a.case_region_id, a.town, a.village, a.case_status, a.case_create,a.case_reporter, a.zip_url,
+        f.id, f.case_forensics, f.heading, f.forensics_type
+        from(
+        select s.case_code, s.case_region_id,  s.case_forensics, s.case_status ,r.town, r.village, s.case_create,s.case_reporter, s.zip_url
+        from settlement_of_claims s, region r
+        where
+        <choose>
+            <when test="status==4">
+                s.case_status != 0
+            </when>
+            <when test="status==5">
+                (s.case_status = 1 or s.case_status = 2)
+            </when>
+            <otherwise>
+                s.case_status = #{status, jdbcType=INTEGER}
+            </otherwise>
+        </choose>
+        and s.case_region_id like '${areaType}%'
+        <if test="caseStartTime != null">
+            and s.case_time &gt;= #{caseStartTime, jdbcType=DATE}
+        </if>
+        <if test="caseEndTime != null">
+            and s.case_time &lt; #{caseEndTime, jdbcType=DATE}
+        </if>
+        and s.case_region_id = r.id
+        order by s.case_create
+        ) a, (
+        select f.case_forensics, f.id, ff.heading, f.forensics_type
+        from forensics f, forensics_type ff
+        where f.forensics_type = ff.id) f
+        where f.case_forensics = a.case_forensics
+        <choose>
+            <when test="forensicsType==0">
+                and f.heading != 0
+            </when>
+            <otherwise>
+                and f.heading = #{forensicsType, jdbcType=INTEGER}
+            </otherwise>
+        </choose>
         )a left join close_case c
         on a.id = c.forensics_id
         group by a.case_code,a.heading,a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url
-        )a, (select @rowNO :=0) b)a LIMIT ${pageMinNum, jdbcType=INTEGER}, ${pagePerNum, jdbcType=INTEGER}
+        )a group by a.case_code,a.town, a.village, a.case_create,a.case_reporter, a.case_status, a.zip_url
+        )a, (select @rowNO :=0) b
+        )a LIMIT ${pageMinNum}, ${pagePerNum}
     </select>
     <select id="settleStatistics" parameterType="map" resultType="settlementStatistics">
-        select count(a.case_code) count_case, sum(c.amount_of_pay) sum_pay
+        select count(distinct a.case_code) count_case, sum(c.amount_of_pay) sum_pay
         FROM(
         select a.case_code, a.case_region_id, a.town, a.village, a.case_status, f.id, f.case_forensics, f.heading
         from(
@@ -77,12 +83,16 @@
                 s.case_status = #{status, jdbcType=INTEGER}
             </otherwise>
         </choose>
-        and s.case_region_id like '${areaType, jdbcType=VARCHAR}%'
-        and s.case_time &gt;= #{caseStartTime, jdbcType=DATE}
-        and s.case_time &lt; #{caseEndTime, jdbcType=DATE}
+        and s.case_region_id like '${areaType}%'
+        <if test="caseStartTime != null">
+          and s.case_time &gt;= #{caseStartTime, jdbcType=DATE}
+        </if>
+        <if test="caseEndTime != null">
+          and s.case_time &lt; #{caseEndTime, jdbcType=DATE}
+        </if>
         and s.case_region_id = r.id
-        )a left join (select f.case_forensics, f.id, ff.heading from forensics f, forensics_type ff where f.forensics_type = ff.id)f
-        on f.case_forensics = a.case_forensics
+        ) a , (select f.case_forensics, f.id, ff.heading from forensics f, forensics_type ff where f.forensics_type = ff.id) f
+        where f.case_forensics = a.case_forensics
         <choose>
             <when test="forensicsType==0">
                 and f.heading != 0
@@ -92,19 +102,36 @@
             </otherwise>
         </choose>
         )a left join close_case c
-        on a.id = c.forensics_id
+        on a.id = c.forensics_id and a.heading != 0
     </select>
     <select id="forensicsInfoList" parameterType="String" resultType="model.forensicsInfo">
-        SELECT a.forensics_id, a.heading, a.species, a.lost_amount, a.lost_weight, a.photo_id,
-          a.photo_mini_url, c.amount_of_pay
+        SELECT a.id, a.forensics_id, a.heading, a.species, a.lost_amount, a.lost_weight, a.photo_id,a.photo_url,
+              a.photo_mini_url, a.amount_of_pay, a.forensics_type, a.forensics_context, s.sent_back_reason, a.update_time
         FROM
         (
-            select f.id, ff.heading, ff.species, f.forensics_id, f.lost_amount, f.lost_weight,
-              f.photo_id, f.photo_mini_url
-            from forensics f, forensics_type ff
-            where f.case_forensics = #{case_forensics, jdbcType=VARCHAR}
-        and f.forensics_type = ff.id
-        )a LEFT JOIN close_case c
-        on a.id = c.forensics_id
+            SELECT a.id, a.forensics_id, a.heading, a.species, a.lost_amount, a.lost_weight, a.photo_id,a.photo_url,
+              a.photo_mini_url, c.amount_of_pay, a.forensics_type, a.forensics_context, a.update_time
+            FROM
+            (
+                select f.id, ff.heading, ff.species, f.forensics_id, f.lost_amount, f.lost_weight,
+                  f.photo_id, f.photo_url, f.photo_mini_url, f.forensics_type, f.forensics_context, f.update_time
+                from forensics f, forensics_type ff
+                where f.case_forensics = #{case_forensics, jdbcType=VARCHAR}
+            and f.forensics_type = ff.id
+            )a LEFT JOIN close_case c
+            on a.id = c.forensics_id
+        )a LEFT JOIN sendBack s
+        on a.id = s.photo_id
+    </select>
+    <select id="mySettles" parameterType="map" resultType="model.caseInfo">
+        select s.case_code, s.case_create, s.case_reporter, s.case_status, s.case_address, r.town, r.village from settlement_of_claims s, region r
+        where s.case_upload_user =#{userId, jdbcType = INTEGER}
+        <if test="status == 1">
+            and  s.case_status =2
+        </if>
+        <if test="status != 1">
+            and  s.case_status =0
+        </if>
+        and r.id = s.case_region_id
     </select>
 </mapper>

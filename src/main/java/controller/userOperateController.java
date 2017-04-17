@@ -42,7 +42,7 @@ public class userOperateController {
         String userName = request.getParameter("userName");
         String userPassword = request.getParameter("userPassword");
         String userChName = request.getParameter("userChName");
-        int phoneNumber = Integer.parseInt(request.getParameter("phoneNumber"));
+        String phoneNumber = request.getParameter("phoneNumber");
         int userTypeId = Integer.parseInt(request.getParameter("userTypeId"));
         int workAreaId = Integer.parseInt(request.getParameter("workAreaId"));
         String workAddress = request.getParameter("workAddress");
@@ -95,6 +95,14 @@ public class userOperateController {
         String token = request.getParameter("token");
         int map = userOperateservice.checkToken(userId, token);
         return map;
+    }
+    @RequestMapping(value = {"/checkVersion"}, method = {RequestMethod.POST}, produces  = "application/json; charset=utf-8")
+    public @ResponseBody int checkVersion(HttpServletRequest request) throws Exception{
+        String version = request.getParameter("version");
+        if(version.equals("1")){
+            return 1;
+        }
+        return 0;
     }
     /**
      *@Title: modifyInfo

@@ -5,8 +5,8 @@
         INSERT INTO settlement_of_claims(case_code, case_create, case_update, case_region_id, case_address,
           case_time, case_reporter, case_cellphone_number, case_indentity, is_household, is_owner, case_forensics,
           case_status, case_upload_user)
-        SELECT count(case_code)+ #{caseCode, jdbcType=INTEGER},
-          sysdate(),sysdate(),#{caseRegionId, jdbcType=INTEGER},
+        SELECT concat(#{caseCode, jdbcType=VARCHAR},if(LENGTH(count(case_code)+1) = 1, concat('0',count(case_code)+1),count(case_code)+1)),
+          now(),now(),#{caseRegionId, jdbcType=INTEGER},
           #{caseAddress, jdbcType=VARCHAR}, #{caseTime, jdbcType=DATE},
           #{caseReporter, jdbcType=VARCHAR},#{caseCellphoneNumber, jdbcType=INTEGER},
           #{caseIdentity ,jdbcType=VARCHAR}, #{isHousehold, jdbcType=INTEGER},
@@ -14,10 +14,14 @@
           #{caseStatus, jdbcType=INTEGER}, #{caseUploadUser, jdbcType=INTEGER}
         FROM settlement_of_claims WHERE case_code like '${caseCodeTime}%'
     </insert>
+    <select id="myCaseCode" parameterType="map" resultType="String">
+        SELECT concat(#{caseCode, jdbcType=VARCHAR},if(LENGTH(count(case_code)+1) = 1, concat('0',count(case_code)+1),count(case_code)+1))
+        FROM settlement_of_claims WHERE case_code like '${caseCodeTime}%'
+    </select>
     <insert id="forensicsUpload" parameterType="map">
         INSERT INTO forensics(create_time, update_time, case_forensics, forensics_id, forensics_type,
         lost_amount, lost_weight, photo_id, photo_url, photo_mini_url, forensics_context)
-        select sysdate(), sysdate(), #{caseForensics, jdbcType=VARCHAR},IFNULL(sum(a.countA),1) countA,
+        select now(), now(), #{caseForensics, jdbcType=VARCHAR},IFNULL(sum(a.countA),1) countA,
           #{forensicsType, jdbcType=INTEGER}, #{lostAmount, jdbcType=INTEGER}, #{lostWeight, jdbcType=INTEGER},
           IFNULL(sum(a.countB),1) countB, #{photoUrl, jdbcType=VARCHAR}, #{photoMiniUrl, jdbcType=VARCHAR},
         #{forensicsContext, jdbcType=VARCHAR} from(
@@ -35,52 +39,111 @@
         INSERT INTO close_case(forensics_id, amount_of_pay)
         VALUES (#{id, jdbcType=INTEGER}, #{amountOfPay, jdbcType=INTEGER})
     </insert>
-    <insert id="forensicsUpdate">
+    <insert id="forensicsUpdate" parameterType="map">
         INSERT INTO forensics(create_time, update_time, case_forensics, forensics_id, forensics_type,
         lost_amount, lost_weight, photo_id, photo_url, photo_mini_url, forensics_context)
-        select sysdate(), sysdate(), #{case_frensics, jdbcType=VARCHAR},#{forensics_id, jdbcType=INTEGER},
+        select now(), now(), #{caseForensics, jdbcType=VARCHAR},#{forensicsId, jdbcType=INTEGER},
           #{forensicsType, jdbcType=INTEGER}, #{lostAmount, jdbcType=INTEGER}, #{lostWeight, jdbcType=INTEGER},
           count(photo_id)+1 photo_id, #{photoUrl, jdbcType=VARCHAR}, #{photoMiniUrl, jdbcType=VARCHAR},
         #{forensicsContext, jdbcType=VARCHAR}
         FROM forensics
-        where case_forensics = #{case_frensics, jdbcType=VARCHAR}
-           AND forensics_id = #{forensics_id, jdbcType=INTEGER}
+        where case_forensics = #{caseForensics, jdbcType=VARCHAR}
+           AND forensics_id = #{forensicsId, jdbcType=INTEGER}
     </insert>
+    <insert id="sendBackReason" parameterType="map">
+        INSERT INTO sendBack(create_time, update_time, photo_id, sent_back_reason)
+        VALUES (now(), now(), #{id, jdbcType=INTEGER}, #{sendBackReason, jdbcType=VARCHAR})
+    </insert>
+    <update id="UpdateSendBack" parameterType="map">
+        UPDATE sendBack
+        SET update_time = now(),
+            sent_back_reason = #{sendBackReason, jdbcType=VARCHAR}
+        where photo_id = #{id, jdbcType=INTEGER}
+    </update>
     <update id="caseExpected" parameterType="map">
         UPDATE settlement_of_claims
-        SET case_status = #{status, jdbcType = INTEGER},
+        SET case_update = now(),
+            case_status = #{status, jdbcType = INTEGER},
             zip_url = #{zip_url, jdbcType = VARCHAR}
-        WHERE case_code = #{caseCode, jdbcType = INTEGER}
+        WHERE case_code = #{caseCode, jdbcType = VARCHAR}
+    </update>
+    <update id="modifyCase" parameterType="map">
+        UPDATE settlement_of_claims
+          SET case_update = now(),
+              case_address = #{caseAddress, jdbcType=VARCHAR},
+              case_Time = #{caseTime, jdbcType=DATE},
+              case_reporter = #{caseReporter, jdbcType=VARCHAR},
+              case_cellphone_number = #{caseCellphoneNumber, jdbcType=INTEGER},
+              case_indentity = #{caseIdentity ,jdbcType=VARCHAR},
+              is_household = #{isHousehold, jdbcType=INTEGER},
+              is_owner = #{isOwner, jdbcType=INTEGER}
+          WHERE case_code = #{caseCode, jdbcType=VARCHAR}
+    </update>
+    <update id="report" parameterType="map">
+       UPDATE settlement_of_claims
+        SET case_update = now(),
+            case_status = #{status, jdbcType = INTEGER}
+        WHERE case_code = #{caseCode, jdbcType = VARCHAR}
     </update>
     <delete id="deleteForensics" parameterType="map">
         DELETE FROM forensics
         WHERE case_forensics = #{caseForensics, jdbcType = VARCHAR}
-        and forensics_type = #{forensicsType, jdbcType = INTEGER}
+        and forensics_Id = #{forensicsId, jdbcType = INTEGER}
     </delete>
-    <delete id="deleteSettlement" parameterType="int">
+    <delete id="deleteSettlement" parameterType="String">
         DELETE FROM settlement_of_claims
-        WHERE case_code = #{caseCode, jdbcType=INTEGER}
+        WHERE case_code = #{caseCode, jdbcType=VARCHAR}
     </delete>
     <delete id="deleteEveryForensics" parameterType="String">
         DELETE FROM forensics
         WHERE case_forensics = #{caseForensics, jdbcType=VARCHAR}
     </delete>
+    <delete id="deletePhoto" parameterType="map">
+        DELETE FROM forensics
+        WHERE case_forensics = #{caseForensics, jdbcType=VARCHAR}
+        AND forensics_id = #{forensicsId, jdbcType=INTEGER}
+        AND photo_id = #{photoId, jdbcType=INTEGER}
+    </delete>
     <select id="listTown" resultType="model.region">
         SELECT id, town, village FROM region
         WHERE id like '%00'
+        ORDER BY id
     </select>
     <select id="listVillage" resultType="model.region">
         SELECT id, town, village FROM region
         WHERE id not like '%00'
+        ORDER BY id
     </select>
-    <select id="searchByForensics" parameterType="String" resultType="int">
+    <select id="searchByForensics" parameterType="String" resultType="java.lang.String">
         SELECT case_code FROM settlement_of_claims WHERE case_forensics = #{caseForensics, jdbcType=VARCHAR}
     </select>
     <select id="searchByForensicsType" parameterType="int" resultType="java.lang.String">
       SELECT species FROM forensics_type WHERE id = #{forensicsType, jdbcType=INTEGER}
     </select>
-    <select id="findByCaseCode" parameterType="int" resultType="java.lang.String">
-        SELECT case_forensics FROM settlement_of_claims WHERE case_code = #{caseCode, jdbcType=INTEGER}
+    <select id="findByCaseCode" parameterType="String" resultType="java.lang.String">
+        SELECT case_forensics FROM settlement_of_claims WHERE case_code = #{caseCode, jdbcType=VARCHAR}
+    </select>
+    <select id="getForensicsId" parameterType="map" resultType="java.lang.Integer">
+      select IFNULL(sum(a.countA),1) countA
+      from(
+        select a.case_forensics,if(a.forensics_type=#{forensicsType, jdbcType=VARCHAR},a.forensics_id,a.forensics_id + 1 ) countA from (
+            SELECT case_forensics,forensics_id, forensics_type,count(photo_id) photo_id FROM forensics
+            where case_forensics = #{caseForensics, jdbcType=VARCHAR}
+            group by case_forensics, forensics_id, forensics_type
+            order by forensics_id desc
+            LIMIT 1
+        )a
+      )a
+    </select>
+    <select id="searchForensicsId" parameterType="map" resultType="java.lang.Integer">
+        SELECT id FROM forensics
+        WHERE case_forensics = #{caseForensics, jdbcType=VARCHAR}
+        AND forensics_id = #{forensicsId, jdbcType=INTEGER}
+        AND photo_id = #{photoId, jdbcType=INTEGER}
+    </select>
+    <select id="countSendId" parameterType="int" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM sendBack
+        WHERE photo_id = #{id, jdbcType=INTEGER}
     </select>
 
 </mapper>

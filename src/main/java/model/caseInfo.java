@@ -4,16 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 public class caseInfo {
-    private int case_code;
+    private String case_code;
     private String case_forensics;
     private Date case_create;
-    private String cse_address;
+    private String case_address;
     private Date case_time;
     private String case_reporter;
-    private int case_cellphone_number;
+    private String case_cellphone_number;
     private int case_upload_user;
     private String user_ch_name;
-    private int phone_number;
+    private String phone_number;
     private int case_status;
     private String caseSchedule;
     private String caseStatus;
@@ -25,6 +25,7 @@ public class caseInfo {
     private int ifAuthority;
     private List<forensicsInfo> forensicsInfoList;
     private String zip_url;
+
 
     public String getZip_url() {
         return zip_url;
@@ -42,11 +43,11 @@ public class caseInfo {
         this.ifAuthority = ifAuthority;
     }
 
-    public int getCase_code() {
+    public String getCase_code() {
         return case_code;
     }
 
-    public void setCase_code(int case_code) {
+    public void setCase_code(String case_code) {
         this.case_code = case_code;
     }
 
@@ -66,12 +67,12 @@ public class caseInfo {
         this.case_create = case_create;
     }
 
-    public String getCse_address() {
-        return cse_address;
+    public String getCase_address() {
+        return case_address;
     }
 
-    public void setCse_address(String cse_address) {
-        this.cse_address = cse_address;
+    public void setCase_address(String case_address) {
+        this.case_address = case_address;
     }
 
     public Date getCase_time() {
@@ -90,11 +91,11 @@ public class caseInfo {
         this.case_reporter = case_reporter;
     }
 
-    public int getCase_cellphone_number() {
+    public String getCase_cellphone_number() {
         return case_cellphone_number;
     }
 
-    public void setCase_cellphone_number(int case_cellphone_number) {
+    public void setCase_cellphone_number(String case_cellphone_number) {
         this.case_cellphone_number = case_cellphone_number;
     }
 
@@ -114,11 +115,11 @@ public class caseInfo {
         this.user_ch_name = user_ch_name;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
@@ -200,7 +201,7 @@ public class caseInfo {
                 "case_code=" + case_code +
                 ", case_forensics='" + case_forensics + '\'' +
                 ", case_create=" + case_create +
-                ", cse_address='" + cse_address + '\'' +
+                ", case_address='" + case_address + '\'' +
                 ", case_time=" + case_time +
                 ", case_reporter='" + case_reporter + '\'' +
                 ", case_cellphone_number=" + case_cellphone_number +

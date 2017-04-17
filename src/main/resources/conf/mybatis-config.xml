@@ -8,14 +8,19 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
         <!-- 命名空间 -->
     <typeAliases>
-   		 <typeAlias alias="user_info" type="model.user_info"/>
+         <typeAlias alias="appendix" type="model.appendix"/>
          <typeAlias alias="authorityVo" type="model.authorityVo"/>
-         <typeAlias alias="region" type="model.region" />
-         <typeAlias alias="settlementStatistics" type="model.settlementStatistics" />
+         <typeAlias alias="caseInfo" type="model.caseInfo"/>
+   		 <typeAlias alias="contact" type="model.contact"/>
+   		 <typeAlias alias="contactList" type="model.contactList"/>
+   		 <typeAlias alias="forensicsInfo" type="model.forensicsInfo"/>
+   		 <typeAlias alias="mail" type="model.mail"/>
+   		 <typeAlias alias="mailLIst" type="model.mailLIst"/>
+   		 <typeAlias alias="newsInfo" type="model.newsInfo"/>
+   		 <typeAlias alias="region" type="model.region"/>
          <typeAlias alias="settleinfo" type="model.settleinfo" />
-         <typeAlias alias="caseInfo" type="model.caseInfo" />
-         <typeAlias alias="contact" type="model.contact" />
-         <typeAlias alias="forensicsInfo" type="model.forensicsInfo" />
+         <typeAlias alias="settlementStatistics" type="model.settlementStatistics" />
+         <typeAlias alias="user_info" type="model.user_info" />
     </typeAliases>
     <!-- 映射map -->
     <!-- 映射map -->
