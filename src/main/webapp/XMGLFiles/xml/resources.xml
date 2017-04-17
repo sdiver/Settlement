@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<!-- 类型：tables -->
+	<tables>
+		<!-- 表名（搜索名）/接口地址/展示项 -->
+		<table>
+			<name>ZZTable</name>
+			<value></value>
+			<url>zz/listzz.do</url>
+			<title>ID</title><width>15%</width><content>zzId</content>
+			<title>名称</title><width>65%</width><content>zzName</content>
+			<title>下载数</title><width>20%</width><content>downloadnum</content>
+		</table>
+	</tables>
+	<urls>
+		<url>
+			<name>downloadFile</name>
+			<title>资质证书下载接口</title>
+			<value>zz/downloadFile.do</value>
+		</url>
+	</urls>
+</resources>

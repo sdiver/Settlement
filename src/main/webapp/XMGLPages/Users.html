@@ -1,0 +1,86 @@
+<script type="text/javascript" src="XMGLFiles/pages/js/Users.js"></script>
+
+<div class="fullScreen_black" id="k_new_role">
+	<div class="mid_square">
+		<h1>新增用户</h1>
+		<div class="div_x" id="allrole">
+			<div class="div_y1"><span class="pSmallR">用户名<em>&nbsp&nbsp</em></span>
+			<input name="username" type="text" class="TxtSmall" />
+			</div>
+			<div class="div_y1"><span class="pSmallR">密码<em>&nbsp&nbsp</em></span>
+			<input name="userpwd" type="text" class="TxtSmall" />
+			</div>
+		</div>
+		<div class="div_x" id="allrole">
+			<div class="div_y1"><span class="pSmallR">姓名<em>&nbsp&nbsp</em></span>
+			<input name="userzhname" type="text" class="TxtSmall" />
+			</div>
+			<div class="div_y1"><span class="pSmallR">区域<em>&nbsp&nbsp</em></span>
+			<select id="arealist" class="TxtSmall">
+				<option value ="1">区域</option>
+			</select>
+			</div>
+		</div>
+	    <div class="div_x">
+		    <div class="div_yr1">
+		    	<input name="new_role_ok" type="button" value="确定" class="BtnSmall"/>
+		    	<input name="new_role_close" type="button" value="关闭" class="BtnSmall"/>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="fullScreen_black" id="k_roleslist">
+	<div class="mid_square" style="width:400px;">
+		<h1>选择角色</h1>
+		<div class="div_x">
+			<ul id="tree" class="ztree"></ul>
+		</div>
+	    <div class="div_x">
+		    <div class="div_yr1">
+		    	<input name="roleslist_ok" type="button" value="确定" class="BtnSmall"/>
+		    	<input name="roleslist_close" type="button" value="关闭" class="BtnSmall"/>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="Main" id="Roles">
+	<div class="Square">
+	    <div class="BtnNormal_new" id="new_role">
+	    	<div class="up">+</div>
+	    	<div class="down">新建用户</div>
+	    </div>
+
+	    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=2)" width="100%" color="#ec6c00" SIZE="10" />
+
+	    <div class="ListNormal">
+	    	<table width="100%" class="DataTable">
+		    <thead>
+		    	<tr>
+		    		<th data-sort style="width:5%">状态</th>
+		    		<th data-sort style="width:20%">用户名</th>
+		    		<th data-sort style="width:10%">姓名</th>
+		    		<th data-sort style="width:10%">区域</th>
+		    		<th data-sort style="width:15%">用户角色</th>
+		    		<th data-sort style="width:40%">操作</th>
+		    	</tr>
+		    </thead>
+		    <tbody id="rolelist">
+		    	<tr>
+		    		<td>启用</td>
+		    		<td>监察中队</td>
+		    		<td>很厉害的中队</td>
+		    		<td data-roleId="id1"><a data-btn1>角色分配</a><a data-btn2>取消角色</a><a data-btn3>停用</a></td>
+		    	</tr>
+		    	<tr>
+		    		<td>启用</td>
+		    		<td>监察大队</td>
+		    		<td>很厉害的大队</td>
+		    		<td data-roleId="id2"><a data-btn1>授权权限</a><a data-btn2>删除角色</a><a data-btn3>禁用</a></td>
+		    	</tr>
+		    </tbody>
+	    </table>
+	    </div>
+	</div>
+</div>

@@ -1,0 +1,303 @@
+<script type="text/javascript" src="app/pages/settlementManage/settlementManage.js"></script>
+
+<iframe class="hidden" id="down"></iframe>
+
+<div class="fullScreen_black hidden" id="modal_caseExpected">
+	<div class="width_60 card has-header has-footer">
+		<div class="card-header">
+			完成案件
+			<button class="btn btn_red" name="modal_caseExpected_btn_close"><i class="fa fa-close"></i></button>
+		</div>
+		<!-- row -->
+		<div class="card-footer">
+			<input type="hidden" name="modal_caseExpected_case_code">
+			<button class="btn btn_blue" name="modal_caseExpected_btn_ok">确定</button>
+		</div>
+	</div>
+</div>
+<div class="fullScreen_black hidden" id="modal_sendBackReason">
+	<div class="width_60 card has-header has-footer">
+		<div class="card-header">
+			退回原因
+			<button class="btn btn_red" name="modal_sendBackReason_btn_close"><i class="fa fa-close"></i></button>
+		</div>
+		<div class="row">
+			<div class="group width_100">
+				<textarea rows="6" name="modal_sendBackReason_sendBackReason"></textarea>
+			</div>
+		</div>
+		<div class="card-footer">
+			<input type="hidden" name="modal_sendBackReason_forensicsId">
+			<input type="hidden" name="modal_sendBackReason_caseForensics">
+			<input type="hidden" name="modal_sendBackReason_photoId">
+			<input type="hidden" name="modal_sendBackReason_case_code">
+			<button class="btn btn_blue" name="modal_sendBackReason_btn_ok">确定</button>
+			<button class="btn btn_red" name="modal_sendBackReason_btn_clean">清空</button>
+		</div>
+	</div>
+</div>
+
+<div class="fullScreen_black text_align_center " id="modal_show_photo">
+	<span class="close fa-stack fa-lg" name="modal_show_photo_btn_close">
+		<i class="fa fa-circle fa-stack-2x"></i>
+		<i class="fa fa-close fa-stack-1x fa-inverse"></i>
+	</span>
+	<div class="content">
+		<img src="" name="modal_show_photo_img">
+	</div>
+	<div class="footer">
+		<button class="btn btn_blue" name="modal_show_photo_btn_plus"><i class="fa fa-search-plus"></i>&nbsp;放大</button>
+		<button class="btn btn_blue" name="modal_show_photo_btn_minus"><i class="fa fa-search-minus"></i>&nbsp;缩小</button>
+		<button class="btn btn_blue" name="modal_show_photo_btn_suitable"><i class="fa fa-desktop"></i>&nbsp;合适尺寸</button>
+		<button class="btn btn_blue" name="modal_show_photo_btn_origin"><i class="fa fa-photo"></i>&nbsp;原始尺寸</button>
+	</div>
+</div>
+
+<div class="Main">
+	<div class="absolute_0-100 margin_top_20 hidden" id="div_info">
+		<div class="width_90 card has-header has-footer">
+			<div class="card-header">
+				案件详情
+				<button class="btn btn_red" name="btn_close_info"><i class="fa fa-close"></i></button>
+			</div>
+			<div class="row">
+				<div class="group width_50">
+					<label>案件号：</label>
+					<input type="text" name="info_case_code" readonly="true">
+				</div>
+				<div class="group width_50">
+					<label>已理赔金额：</label>
+					<input type="text" name="info_sum_pay" readonly="true">
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_50">
+					<label>案件登记人：</label>
+					<input type="text" name="info_user_ch_name" readonly="true">
+				</div>
+				<div class="group width_50">
+					<label>报案人：</label>
+					<input type="text" name="info_case_reporter" readonly="true">
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_50">
+					<label>立案时间：</label>
+					<input type="text" name="info_case_create" readonly="true">
+				</div>
+				<div class="group width_50">
+					<label>报案时间：</label>
+					<input type="text" name="info_case_time" readonly="true">
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_50">
+					<label>登记人电话：</label>
+					<input type="text" name="info_phone_number" readonly="true">
+				</div>
+				<div class="group width_50">
+					<label>报案人电话：</label>
+					<input type="text" name="info_case_cellphone_number" readonly="true">
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_50">
+					<label>案件进度：</label>
+					<input type="text" name="info_caseSchedule" readonly="true">
+				</div>
+				<div class="group width_50">
+					<label>案件状态：</label>
+					<input type="text" name="info_caseStatus" readonly="true">
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_50">
+					<label>镇：</label>
+					<input type="text" name="info_town" readonly="true">
+				</div>
+				<div class="group width_50">
+					<label>村：</label>
+					<input type="text" name="info_village" readonly="true">
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_100">
+					<label>案发地址：</label>
+					<input type="text" name="info_case_address" readonly="true">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="card has-header" id="div_info_tabs">
+					<ul class="card-header-tabs">
+						<li class="active">
+							<a show="menu_1">基础取证</a>
+						</li>
+						<li class>
+							<a show="menu_2">案件取证</a>
+						</li>
+						<li class>
+							<a show="menu_3">案件笔录</a>
+						</li>
+						<li class>
+							<a show="menu_4">非屋主信息</a>
+						</li>
+						<li class>
+							<a show="menu_5">非所有者信息</a>
+						</li>
+					</ul>
+					<div class="row">
+						<div class="card" id="menu_1">
+							<div class="row border_bottom" name="forensics_type_1">
+								<p>事发地址：</p>
+							</div>
+							<div class="row border_bottom" name="forensics_type_2">
+								<p>110报案回执单：</p>
+							</div>
+							<div class="row border_bottom" name="forensics_type_3">
+								<p>户口簿-户主页：</p>
+							</div>
+							<div class="row" name="forensics_type_5">
+								<p>户主银行卡：</p>
+							</div>
+						</div>
+
+						<div class="card" id="menu_2">
+						</div>
+
+						<div class="card" id="menu_3">
+							<div class="row" name="forensics_type_20"></div>
+						</div>
+						<div class="card" id="menu_4">
+							<div class="row border_bottom" name="forensics_type_4">
+								<p>身份证信息：</p>
+							</div>
+							<div class="row" name="forensics_type_6">
+								<p>报案人与户主关系证明：</p>
+							</div>
+						</div>
+						<div class="card" id="menu_5">
+							<div class="row" name="forensics_type_7">
+								<p>财务所有者与户主关系：</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card-footer">
+				<button class="btn btn_blue" name="btn_caseExpected">完成案件</button>
+				<button class="btn btn_blue" name="btn_sendBack">退回案件</button>
+				<button class="btn btn_blue" name="btn_downZIP">案件下载</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="absolute_0-100 margin_top_20" id="div_table">
+		<div class="width_90 Search">
+			<div class="title">高级查询</div>
+			<div class="row">
+				<div class="group width_33">
+					<input type="hidden" name="s_regionId" value=0 data-town="所有" data-village="所有">
+					<label>地区选择：</label>
+					<select name="s_town">
+						<option value ="0">全县</option>
+					</select>
+					<select name="s_village" class="hidden"></select>
+				</div>
+				<div class="group width_67">
+					<label>日期区间：</label>
+					<input id="startTime" class="Wdate width_33" type="text" onFocus="WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss',maxDate:'#F{$dp.$D(\'endTime\')||\'2050-01-01\'}'})" readonly="true" />
+					<label>至</label>
+					<input id="endTime" class="Wdate width_33" type="text" onFocus="WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss',minDate:'#F{$dp.$D(\'startTime\')}',maxDate:'2050-01-01'})" readonly="true" />
+				</div>
+			</div>
+			<div class="row">
+				<input type="hidden" name="s_status" value="4" data-t="所有案件">
+				<div class="group width_33">
+					<label>案件类型：</label>
+					<select name="s_forensicsType">
+						<option value =0>所有盗窃案</option>
+						<option value =1>摩托车盗窃案</option>
+						<option value =2>电动车盗窃案</option>
+						<option value =3>现金首饰盗窃案</option>
+						<option value =4>牲畜盗窃案</option>
+						<option value =5>其它盗窃案</option>
+					</select>
+				</div>
+				<div class="group width_33" name="s_status_1">
+					<label>案件进度：</label>
+					<select class="width_40">
+						<option value =4>所有案件</option>
+						<option value =5>未结案</option>
+						<option value =3>已结案</option>
+					</select>
+				</div>
+				<div class="group width_33 hidden" name="s_status_2">
+					<label>案件状态：</label>
+					<select class="width_40">
+						<option value =5>所有未结案</option>
+						<option value =2>退回案件</option>
+						<option value =1>已上报案件</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_100">
+					<label name="summary">
+						<!-- 汇总信息： 镇：<strong>螺城</strong> 村：<strong>梅山</strong> 案件类型：<strong>摩托车盗窃案</strong> 案件进度：<strong>已结案</strong> 案件数：<strong>15</strong> 件 已理赔金额：<strong>1500</strong> 元 -->
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="group width_10">
+					<button name="btn_search" class="btn btn_full btn_blue">查询</button>
+				</div>
+				<div class="group width_10">
+					<button name="btn_clean" class="btn btn_full btn_blue">清空</button>
+				</div>
+			</div>
+		</div>
+
+    	<table class="width_90 DataTable">
+		    <thead>
+		    	<tr>
+		    		<th style="width:3%">
+		    			<input type="checkbox" check-all>
+		    		</th>
+		    		<th style="width:4%">序号</th>
+		    		<th style="width:20%">案件号</th>
+		    		<th style="width:10%">案件类型</th>
+		    		<th style="width:8%">报案日期</th>
+		    		<th style="width:8%">报案人</th>
+		    		<th style="width:8%">案件进度</th>
+		    		<th style="width:8%">案件状态</th>
+		    		<th style="width:10%">已理赔金额</th>
+		    		<th style="width:7%">镇</th>
+		    		<th style="width:7%">村</th>
+		    		<th style="width:7%">操作</th>
+		    	</tr>
+		    </thead>
+		    <tbody id="dealData"></tbody>
+	    </table>
+
+	    <div class="width_90 PageButton">
+	    	<div class="pageTurn"></div>
+			<div class="pageGoto">
+				<input type="text" name="txt_pageGoto">
+				<button class="btn btn_white" name="btn_pageGoto">跳转</button>
+			</div>
+	    	<div class="pageNum">
+	    		<select id="pageNum">
+					<option value ="10">10项</option>
+					<option value ="15">15项</option>
+					<option value ="20">20项</option>
+					<option value ="30">30项</option>
+				</select>
+	    	</div>
+	    	<button class="btn btn_blue width_10" name="downloadFile">批量导出</button>
+	    	<button class="btn btn_red width_10">批量导入</button>
+	    	<button class="btn btn_green width_10">模版下载</button>
+	    </div>
+	</div>
+</div>

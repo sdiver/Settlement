@@ -1,0 +1,102 @@
+@charset "utf-8";
+/*主体*/
+html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+	min-width: 800px;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: url(../img/background.jpg) no-repeat;
+	background-size: 100%;
+	background-position: bottom center;
+	-webkit-background-size:cover;
+	-o-background-size:cover;
+}
+
+/*首尾*/
+.div_logo{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30%;
+	border-bottom: 5px solid #007FFF;
+	background: url(../img/logo.png) no-repeat;
+	background-size: auto 100%;
+	background-position: 10%;
+}
+.footer{
+	position: absolute;
+	height: 29px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-top: 1px solid #ddd;
+	background-color: #fff;
+	line-height: 29px;
+	padding-left: 30px;
+}
+/*轮播*/
+.div_slider{
+	position: absolute !important;
+	width: 600px;
+	height: 375px;
+	border:5px solid #fff;
+	right: 5%;
+	top: 20%;
+}
+.div_slider>img{
+	width: 590px;
+	height: 365px;
+	border:5px solid #ddd;
+}
+/*登录框*/
+.div_Login{
+	position: absolute;
+	width:400px;
+	top: 35%;
+	left: 11%;
+	z-index:20;
+	background-color: #fff;
+	opacity: 0.9;
+	filter: Alpha(opacity=90);
+	border: 1px solid #00d5ff;
+	padding: 20px 20px 10px;
+}
+.div_Login h1{
+	margin: 0 0 10px 20px;
+}
+.div_Login .row{
+	font-size: 20px;
+	height: 30px;
+	line-height: 30px;
+	font-weight: 600;
+}
+.div_Login .row input{
+	width: 99%;
+	font-size: 20px;
+	height: 30px;
+	line-height: 30px;
+	background-color: #fff;
+	margin: 5px 0;
+}
+.div_Login .row button{
+	width: 100%;
+	background-color: #007fff;
+	border: 0;
+	height: 30px;
+	line-height: 30px;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 0;
+	margin: 0;
+	color: #fff;
+}
+.div_Login .row button:hover{
+	background-color: #00C8FF;
+}

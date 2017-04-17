@@ -1,0 +1,55 @@
+﻿<script type="text/javascript" src="XMGLFiles/pages/js/Task.js"></script>
+
+<div class="fullScreen_black hidden" id="k_selectNext">
+	<div class="sml_square">
+		<h1>选择权限</h1>
+		<div class="div_x">
+			<ul id="tree" class="ztree"></ul>
+		</div>
+	    <div class="div_x">
+		    <div class="div_yr1">
+		    	<input name="k_selectNext_ok" type="button" value="确定" class="BtnSmall"/>
+		    	<input name="k_selectNext_close" type="button" value="关闭" class="BtnSmall"/>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="Main" id="Task">
+	<div class="main_L">
+		<div data-turnTo="dealCase">
+			<img src="XMGLFiles/icons/arrow.png">
+			待处理
+		</div>
+		<!-- <div data-turnTo="preFinishCase">待核销</div>
+		<div data-turnTo="spc">特殊</div> -->
+	</div>
+	<div class="main_M">
+		<div id="dealCase" data-m>
+			<h1>待处理</h1>
+			<div class="SearchTable"></div>
+			<div class="overflow_auto">
+		    	<table width="90%" class="DataTable">
+				    <thead>
+				    	<tr>
+				    		<th data-sort style="width:10%">案件编号</th>
+				    		<th data-sort style="width:15%">报告日期</th>
+				    		<th data-sort style="width:15%">报告人</th>
+				    		<th data-sort style="width:15%">所属乡镇</th>
+				    		<th data-sort style="width:15%">所在村居</th>
+				    		<th data-sort style="width:10%">案件状态</th>
+				    		<th data-sort style="width:20%">操作</th>
+				    	</tr>
+				    </thead>
+				    <tbody id="dealCaselist"></tbody>
+			    </table>
+		    </div>
+		</div>
+		<div class="hidden" id="preFinishCase" data-m>
+			<h1>待核销</h1>
+		</div>
+		<div class="hidden" id="spc" data-m>
+			<h1>特殊</h1>
+		</div>
+	</div>
+</div>

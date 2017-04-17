@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mapper.mailMapper">
+    <insert id="send" parameterType="map">
+      INSERT INTO mail(mail_id, user_id)
+      VALUES (#{mailUuid, jdbcType=VARCHAR}, #{sendUserId, jdbcType=INTEGER})
+    </insert>
+    <insert id="sendMail" parameterType="map">
+      INSERT INTO person_mail(mail_uuid, create_time, title, context)
+      VALUES (#{mailUuid, jdbcType=VARCHAR}, now(), #{title, jdbcType=VARCHAR}, #{context, jdbcType=VARCHAR})
+    </insert>
+    <select id="view" parameterType="int" resultType="model.mailLIst">
+        select p.id, p.title,p.create_time from mail m, person_mail p, user_info i
+        where i.user_id = #{userId, jdbcType=INTEGER}
+        and i.work_area_id = m.user_id
+        and p.mail_uuid = m.mail_id
+    </select>
+    <select id="viewall" resultType="model.mailLIst">
+        select p.id, p.title,p.create_time from mail m, person_mail p
+        where  m.user_id = 1
+        and p.mail_uuid = m.mail_id
+    </select>
+    <select id="mailinfo" parameterType="int" resultType="model.mail">
+        select id, mail_uuid, create_time, title, context
+        from person_mail
+        where id = #{id, jdbcType=INTEGER}
+
+    </select>
+    <select id="appendixinfo" parameterType="String" resultType="model.appendix">
+      select id, appendix_name, appendix_type, appendix_url
+        from mail_appendix
+        where mail_uuid = #{mail_uuid, jdbcType=VARCHAR}
+
+    </select>
+
+    <delete id="mailDelete" parameterType="int">
+      DELETE FROM person_mail
+      WHERE id = #{id,jdbcType=INTEGER}
+
+    </delete>
+    <delete id="appendixDelete" parameterType="String">
+      DELETE FROM mail_appendix
+      WHERE mail_uuid = #{mail_uuid, jdbcType=VARCHAR}
+
+    </delete>
+    <delete id="personDelete" parameterType="String">
+      DELETE FROM mail
+      WHERE mail_id = #{mail_uuid, jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="addAppendix" parameterType="map" useGeneratedKeys="true" keyProperty="id">
+      INSERT INTO mail_appendix(create_time, update_time, mail_uuid, appendix_name, appendix_type, appendix_url)
+      VALUES (now(),now(),#{mailUuid, jdbcType=VARCHAR},#{filename,jdbcType=VARCHAR},#{tail, jdbcType=VARCHAR},#{fileurl,jdbcType=VARCHAR})
+    </insert>
+    <select id="getUrlAppendix" parameterType="int" resultType="java.lang.String">
+      SELECT appendix_url FROM mail_appendix
+      WHERE id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteAppendix" parameterType="int">
+      DELETE FROM mail_appendix
+      WHERE id = #{id,jdbcType=INTEGER}
+    </delete>
+    <select id="listCounty" resultType="contactList">
+        SELECT (select @dn:=1) id, village name,(select @rn:=0) pid, (select @dn:=1) regionId, (select @dn:=1) type
+        FROM region
+        WHERE id = 1000
+    </select>
+    <select id="listTown" parameterType="int" resultType="contactList">
+        SELECT id*10 id,concat(village,if(id=1000,"综治办","")) name,(select @rn:=1) pid, id regionId, (select @dn:=2) type
+        FROM region
+        WHERE id % 100 = 0
+        order by id
+    </select>
+    <select id="listVillage" parameterType="int" resultType="contactList">
+        SELECT id, concat(village,if(id%100=0,"综治办","")) name,(select @rn:=#{regionId, jdbcType=INTEGER}*1000) pid, id regionId, (select @dn:=3) type
+        FROM region
+        Where id like CONCAT(#{regionId},'%')
+        and id != 1000
+        order by id
+    </select>
+</mapper>

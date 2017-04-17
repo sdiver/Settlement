@@ -1,0 +1,201 @@
+@charset "utf-8";
+/*主体框架*/
+body{
+	margin:0;
+	padding:0;
+	height:100%;
+	min-width:0px;
+	background:url(pics/YDZF_Bg.jpg) no-repeat 50% 0% #2e354b;
+}
+.test_Page{
+	display:block;
+	height:1000px;
+}
+
+/*Logo*/
+.Logo{
+	display:block;
+}
+
+/*菜单*/
+.Menu{
+	width:80px;/*菜单宽度设置*/
+	height:600px;
+	position:absolute;
+	background-color:rgba(16,22,31,0.6);
+	border-radius:5px;
+	transition:width 0.5s;
+	-moz-transition:width 0.5s; /* Firefox 4 */
+	-webkit-transition:width 0.5s; /* Safari and Chrome */
+	-o-transition:width 0.5s; /* Opera */
+	overflow:hidden;
+	z-index:2;
+}
+.Menu:hover{/*主菜单横向动画*/
+	width: 200px;
+}
+/*一级菜单*/
+.Menu ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid rgba(113,191,68,0.5);
+}
+.Menu ul li{
+	border-bottom: 1px solid #000;
+	border-top: 1px solid rgba(113,191,68,0.5);
+}
+.Menu li:hover{
+	background-color:rgb(49,126,243);
+}
+.Menu ul li div a{
+	position: relative;
+	font-size: 24px;
+	font-weight:bolder;
+	color:white;
+	display:block;
+}
+.Menu ul li div a img{
+	position:absolute;
+	max-width:60px;
+	left:10;/*图片位置编辑*/
+	width:60px;
+	height:60px;
+}
+.Menu ul li div a span{
+	position: absolute;
+	left: 80px;/*一级菜单文字位置编辑*/
+	top: 17px;
+	width: 100px;
+	text-align:center;
+	font-family: inherit;
+}
+/*二级菜单*/
+.Menu ul li div ul{
+	list-style:none;
+	border:none;
+	position:relative;
+	top:60;
+	left:15;/*二级菜单文字位置*/
+}
+.Menu ul li div ul li{
+	border:none;
+}
+.Menu ul li div lu li:hover{
+	background-color:rgb(49,126,243);
+}
+.Menu ul li div ul li a{
+	border-top:1px solid #fff;
+	height:40;
+	width:170;
+	font-size:18px;
+}
+.Menu ul li div ul li a span{
+	position:absolute;
+	left:-5;
+	top:10;
+	width:180;
+}
+/*二级菜单动画配置*/
+.Menu_1,.Menu_2,.Menu_3{
+	height:60px;
+	display:block;
+	transition:height 0.5s;
+	overflow:hidden;
+	-moz-transition:height 0.5s; /* Firefox 4 */
+	-webkit-transition:height 0.5s; /* Safari and Chrome */
+	-o-transition:height 0.5s; /* Opera */
+}
+.Menu_1:hover{	height:200px;}
+.Menu_2:hover{	height:190px;}
+.Menu_3:hover{	height:100px;}
+
+/*主体*/
+.Content{
+	/*position:absolute*/
+}
+.Title{
+	width:100%;
+	height:100px;
+	display:block;
+	overflow:hidden;
+	/*background-color:blue;*/
+	opacity:0.7;
+}
+.Main{
+	width:100%;
+	height:400px;
+	overflow:auto;
+	/*background-color:rgba(16,22,31,0.6);*/
+}
+
+/*控件*/
+/*表格*/
+.DataTable{
+	width:100%;
+	border-collapse:collapse;
+	border:0;
+	border-radius:5px;
+}
+.DataTable thead tr th{
+	text-align:left;
+	vertical-align:baseline;
+	/*border:1px solid #000;*/
+	padding:5px 10px 5px 5px;
+	background-color:#9C0;
+}
+.DataTable tbody tr td{
+	vertical-align:text-top;
+	/*border:1px solid #000;*/
+	padding:5px 10px 5px 5px;
+	background-color:#0F0;
+}
+.DataTable tbody tr:nth-child(even) td{
+	vertical-align:text-top;
+	/*border:1px solid #000;*/
+	padding:5px 10px 5px 5px;
+	background-color:#C69;
+}
+.DataTable tbody tr:hover td{
+	background-color:#66C;
+}
+
+/*按钮*/
+.ButtonSubmit{
+	/*width:100%;*/
+	height:60px;
+	/*float:none;*/
+	margin:0px;
+	padding:10px;
+	background-color:#00b4ff;
+	color:#fff;
+	border:0;
+	
+	font-size:24px;
+	font-weight:bolder;
+}
+.ButtonSubmit:hover{
+	top: -1px;
+	box-shadow: 2px;
+	background-color: #009FE3;
+}
+
+/*输入框*/
+.TxtNormal{
+	border:none;
+	height:40px;
+	color: #606e78;
+	margin:0px;
+	padding:0 0 0 10px;;
+	font-size:24px;
+}
+/*控件end*/
+
+/*页脚*/
+.Bottom{
+	width:520px;
+	height:50px;
+	display:block;
+	background-color:yellow;
+}

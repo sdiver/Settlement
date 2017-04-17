@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<HTML>
+ <HEAD>
+  <TITLE> ZTREE DEMO </TITLE>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="XMGLFiles/controls/css/demo.css" type="text/css">
+  <link rel="stylesheet" href="XMGLFiles/controls/css/zTreeStyle/zTreeStyle.css" type="text/css">
+  <script type="text/javascript" src="XMGLFiles/jquery-1.11.2.js"></script>
+  <script type="text/javascript" src="XMGLFiles/controls/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="XMGLFiles/controls/js/jquery.ztree.excheck.js"></script>
+  <SCRIPT type="text/javascript" >
+   var zTreeObj,
+  setting = {
+    view: {
+      selectedMulti: false
+    },
+    check: {
+    enable: true,
+    chkStyle: "checkbox"
+  }
+  },
+  zTreeNodes = [
+    {"name":"权限1"
+    },
+    {"name":"权限2"
+    },
+    {"name":"权限3"
+    }
+
+
+  ];
+
+  $(document).ready(function(){
+   
+    zTreeObj = $.fn.zTree.init($("#tree"), setting, zTreeNodes);
+
+    $('#test').click(function(){
+        var treeObj = $.fn.zTree.getZTreeObj("tree");
+        var nodes = treeObj.getCheckedNodes(true); 
+
+        var checked = treeObj.getNodes()[0].checked;
+        alert(nodes.length);
+    });
+
+  });
+  </SCRIPT>
+ </HEAD>
+
+<BODY>
+<ul id="tree" class="ztree" style="width:230px; overflow:auto;"></ul>
+<a id="test">输出</a>
+ </BODY>
+</HTML>

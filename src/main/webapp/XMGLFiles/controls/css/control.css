@@ -1,0 +1,355 @@
+@charset "utf-8";
+/*ALL*/
+.width_10{
+	width: 10%;
+}
+.width_20{
+	width: 20%;
+}
+.width_40{
+	width: 40%;
+}
+.width_60{
+	width: 60%;
+}
+.width_80{
+	width: 80%;
+}
+/*浮动清除*/
+.CleanFloat:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+/*分割线*/
+HR{
+	margin: 20px 0;
+}
+/*按钮*/
+.BtnNormal_new{
+	width: 96px;
+	height: 96px;
+	color: #ec6c00;
+	border: 2px solid #ec6c00;
+	cursor: pointer;
+}
+.BtnNormal_new>.up{
+	margin: 0 auto;
+	font-size: 55px;
+}
+.BtnNormal_new>.down{}
+.BtnNormal{
+	display:block;
+	border:0;
+	width:100%;
+	height:40px;
+	float:left;
+	margin:10px 0;
+	padding:5px;
+	background-color:#2489C5;
+	color:#fff;
+	font-size:24px;
+	font-weight:bolder;
+}
+.BtnNormal:hover{
+	background-color: #35BDFF;
+}
+.BtnSmall{
+	display:block;
+	border:0;
+	width:80px;
+	height:30px;
+	float:left;
+	color:#fff;
+	background-color:#454545;
+	font-size:18px;
+	font-weight:bolder;
+}
+.BtnSmall:hover{
+	color: #000;
+	background-color: #858585;
+}
+
+/*p文本*/
+.pSmallI{
+	height: 30px;
+	line-height: 30px;
+	text-align:left;
+	text-indent: 10px;
+	display:inline;
+	cursor: pointer;
+}
+.pSmall{
+	float:left;
+	height: 30px;
+	line-height: 30px;
+	font-weight:bold;
+	text-align:left;
+	text-indent: 10px;
+	display:inline;
+}
+.pSmall em{
+	color:#f00;
+}
+.pSmallR{
+	float:left;
+	height: 30px;
+	line-height: 30px;
+	font-weight:bold;
+	text-align:right;
+	display:inline;
+	width:130px;
+}
+.pSmallR em{
+	color:#f00;
+}
+.pSmallD{
+	float:left;
+	color:#f00;
+	margin-left: 8px;
+	height: 30px;
+	line-height: 30px;
+	text-align:left;
+	display:inline;
+	cursor: pointer;
+}
+/*输入框*/
+.TxtNormal{
+	border:none;
+	width:280px;
+	height:40px;
+	line-height: 40px;
+	float:left;
+	color: #606e78;
+	margin:10px 0;
+	font-size:24px;
+}
+.TxtPassword{
+	border:none;
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	float:left;
+	color: #606e78;
+	margin:10px 0;	
+	font-size:24px;
+}
+.TxtSmall{
+	position:relative;
+	border: 1px solid #d8d8d8;
+	width:142px;
+	height:28px;
+	padding-left: 3px;
+	padding-right: 3px;
+	line-height: 28px;
+	display:inline;
+	text-align:left;
+}
+.TxtFile{
+	position:relative;
+	float: left;
+	border: 1px solid #d8d8d8;
+	width:245px;
+	height:28px;
+	/*margin-left: 10px;*/
+	padding-right: 3px;
+	line-height: 28px;
+	display:inline;
+	text-align:left;
+}
+.TxtArea{
+	position:relative;
+	border: 1px solid #d8d8d8;
+	resize: none;
+	display:inline;
+	padding:4px 3px;
+	font-size:16px;
+	text-align:left;
+}
+/*可选框*/
+.CheckBox,.RadioBox {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    background: url(../../icons/checkbox.png) no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.CheckBox {
+    background-position: 0 0;
+}
+.CheckBox.hover {
+    background-position: -24px 0;
+}
+.CheckBox.checked {
+    background-position: -48px 0;
+}
+.CheckBox.disabled {
+    background-position: -72px 0;
+    cursor: default;
+}
+.CheckBox.checked.disabled {
+    background-position: -96px 0;
+}
+
+.RadioBox {
+    background-position: -120px 0;
+}
+.RadioBox.hover {
+    background-position: -144px 0;
+}
+.RadioBox.checked {
+    background-position: -168px 0;
+}
+.RadioBox.disabled {
+    background-position: -192px 0;
+    cursor: default;
+}
+.RadioBox.checked.disabled {
+    background-position: -216px 0;
+}
+/*下拉框*/
+.DropBoxs{
+	float:left;
+	width:150px;
+	height:28px;
+	background-color: #fff;
+	cursor: default;
+	position:relative;
+	z-index: 100;
+}
+.DropBoxs dt input{
+	background:url(../../icons/dropbox_down.gif) no-repeat;
+	background-position:90% 50%;
+	cursor: pointer;
+}
+.DropBoxs dt:hover{
+	border-color: #2489C5;
+}
+.DropBoxs dd{
+	display: none;
+	height:217px;
+	overflow-y: auto;
+}
+.DropBoxs dd ul{
+	list-style: none;
+	background-color:#fff;
+	border-left: 1px solid #d8d8d8;
+	border-right: 1px solid #d8d8d8;
+}
+.DropBoxs dd ul li{
+	padding-top:5px;
+	padding-bottom:5px;
+	border-bottom: 1px solid #d8d8d8;
+	text-align: left;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+.DropBoxs dd ul li:hover{
+	background-color: #2489C5;
+	color:#fff;
+}
+/*上传文件控件*/
+.Upload{
+	margin: 0 auto;
+}
+.Upload:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+/*表格*/
+.DataTable{
+	margin:15px auto 5px;
+	border-collapse:collapse;
+	border:1px solid #454545;
+}
+.DataTable thead{
+	width: inherit;
+}
+.DataTable thead tr th{
+	font-size:18px;
+	vertical-align:baseline;
+	height: 32px;
+	line-height: 32px;
+	background-color:#454545;
+	color:#fff;
+	cursor: pointer;
+}
+.DataTable thead tr th:hover{
+	color: #f00;
+}
+.DataTable tbody tr td{
+	vertical-align:text-top;
+	padding-top: 4px;
+	padding-bottom: 5px;
+}
+.DataTable tbody tr:nth-child(even) td{
+	/*background-color:#2489C5;*/
+	/*color:#fff;*/
+}
+.DataTable tbody tr:nth-child(odd) td{
+	background-color:#F5F5F5;
+}
+.DataTable tbody tr:hover td{
+	background-color:#858585;
+	color:#fff;
+}
+.DataTable tbody tr td a{
+	padding: 0 10px;
+	text-decoration: none;
+	cursor: pointer;
+	color: inherit;
+}
+.DataTable tbody tr td a:hover{
+	color: #f00;
+}
+/*翻页按钮*/
+.PageButton{
+	/*background-color:#F5F5F5;*/
+	margin: 0 auto;
+}
+.PageButton:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.PageButton .pageTurn{
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	margin-right:5px;
+}
+.PageButton .pageTurn a{
+	text-decoration: blink;
+	cursor: pointer;
+}
+.PageButton .pageTurn .pageTurnChecked{
+	color: #f00;
+	font-size: 18px;
+	font-weight: bold;
+}
+.PageButton .pageGoto{
+	float: left;
+	margin: 0 5px;
+}
+.PageButton .pageGoto input{
+	float: left;
+	width: 42px;
+	margin: 0 2px;
+}
+.PageButton .pageNum{
+	float: left;
+}
+/*控件end*/

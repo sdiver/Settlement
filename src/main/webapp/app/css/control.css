@@ -1,0 +1,164 @@
+@charset "utf-8"
+/*分割线*/
+HR{
+	margin: 20px 0;
+}
+
+
+
+.TxtFile{
+	position:relative;
+	float: left;
+	border: 1px solid #d8d8d8;
+	width:245px;
+	height:28px;
+	/*margin-left: 10px;*/
+	padding-right: 3px;
+	line-height: 28px;
+	display:inline;
+	text-align:left;
+}
+.TxtArea{
+	position:relative;
+	border: 1px solid #d8d8d8;
+	resize: none;
+	display:inline;
+	padding:4px 3px;
+	font-size:16px;
+	text-align:left;
+}
+
+/*按钮*/
+.btn{
+	border: 1px solid;
+	cursor: pointer;
+}
+.btn_noBorder{
+	border: none;
+	cursor: pointer;
+}
+.btn_full{
+	display: block;
+	width: 100%;
+}
+.btn_sm{height: 24px;line-height: 22px;font-size: small;}
+.btn_white{border-color: #ccc;background-color: #fff;color: #000;}
+.btn_white:hover{background-color: #ddd;}
+.btn_blue{border-color: #2E6DA4;background-color: #337AB7;color: #fff;}
+.btn_blue:hover{background-color: #286090;}
+.btn_red{border-color: #D43F3A;background-color: #C9302C;color: #fff;}
+.btn_red:hover{background-color: #D9534F;}
+.btn_green{border-color: #4CAE4C;background-color: #5CB85C;color: #fff;}
+.btn_green:hover{background-color: #449D44;}
+.btn_yellow{border-color: #EEA236;background-color: #F0AD4E;color: #fff;}
+.btn_yellow:hover{background-color: #EC971F;}
+
+
+/*上传文件控件*/
+.Upload{
+	margin: 0 auto;
+}
+.Upload:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/*查询*/
+.Search{
+	margin: 0 auto 5px;
+	padding-top: 20px;
+	border: 1px solid #505050;
+}
+.Search>.title{position: absolute;top: 0;left: 5%;padding: 3px;background-color: #505050;color: #fff;cursor: default;}
+.Search>.row{
+	position: relative;
+	padding: 0 20px;
+	margin: 10px auto;
+}
+.Search>.row>.group{
+	display: inline-block;
+}
+/*表格*/
+.DataTable{
+	margin:15px auto 0;
+	border-collapse:collapse;
+	border:1px solid #505050;
+}
+.DataTable thead{
+	width: inherit;
+}
+.DataTable thead tr th{
+	vertical-align:baseline;
+	background-color:#505050;
+	color:#fff;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+}
+.DataTable thead tr th:hover{
+	color: #f00;
+}
+.DataTable tbody tr td{
+	vertical-align:text-top;
+	padding-top: 4px;
+	padding-bottom: 5px;
+	font-size: small;
+	text-align: center;
+}
+.DataTable tbody tr:nth-child(even) td{
+	/*background-color:#2489C5;
+	color:#fff;*/
+}
+.DataTable tbody tr:nth-child(odd) td{
+	background-color:#ddd;
+}
+.DataTable tbody tr:hover td{
+	background-color:#858585;
+	color:#fff;
+}
+.DataTable tbody tr td a{
+	padding: 0 3px;
+	margin: 0 2px;
+	text-decoration: none;
+	font-size: small;
+	cursor: pointer;
+}
+/*翻页按钮*/
+.PageButton{
+	margin: 0 auto;
+}
+.PageButton .pageTurn{
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	margin-right:5px;
+}
+.PageButton .pageTurn a{
+	text-decoration: blink;
+	cursor: pointer;
+}.PageButton .pageTurn a:hover{
+	color: #108ACC;
+}
+.PageButton .pageTurn .pageTurnChecked{
+	color: #f00;
+	font-size: 18px;
+	font-weight: bold;
+}
+.PageButton .pageGoto{
+	display: inline-block;
+	margin: 0 5px;
+}
+.PageButton .pageGoto input{
+	display: inline-block;
+	width: 40px;
+}
+.PageButton .pageGoto button{
+	cursor: pointer;
+}
+.PageButton .pageNum{
+	display: inline-block;
+}
+/*控件end*/

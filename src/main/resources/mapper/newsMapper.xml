@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mapper.newsMapper">
+	<insert id="addPhoto" parameterType="map">
+		INSERT INTO news(create_date,photo_url, order_by)
+		select now(), #{photoUrl, jdbcType=VARCHAR}, if(count(a.order_by)=0,1,a.order_by+1) order_by from(
+		select order_by
+		from news
+		order by order_by desc
+		limit 1
+		)a
+	</insert>
+
+	<select id="listPhoto" resultType="model.newsInfo">
+		SELECT id, photo_url, (@row:=@row+1) orderBy
+		FROM news n, (select @row:=0) b
+		ORDER BY order_by
+	</select>
+
+	<delete id="deletePhoto" parameterType="int">
+		DELETE FROM news
+		WHERE id = #{id, jdbcType=INTEGER}
+	</delete>
+	<select id="getOrder" parameterType="int" resultType="java.lang.Integer">
+		SELECT order_by
+		FROM news
+		WHERE id = #{upId, jdbcType=INTEGER}
+	</select>
+	<update id="updateOrder">
+		UPDATE news
+		SET order_by = #{orderBy, jdbcType=INTEGER}
+		WHERE id = #{id, jdbcType=INTEGER}
+	</update>
+</mapper>

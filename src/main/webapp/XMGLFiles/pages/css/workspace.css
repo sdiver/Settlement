@@ -1,0 +1,478 @@
+@charset "utf-8";
+/*主体框架*/
+*{
+	margin:0;
+	padding:0;
+	text-align:center;
+	font-family: Verdana, Arial, '微软雅黑';
+	font-size: 16px;
+}
+html{
+	min-width: 1280px;
+	height: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background-color:#f1f1f1;
+}
+
+/*通用*/
+.hidden{display: none;}
+.overflow_auto{overflow: auto;}
+.q_text_align_left{text-align: left !important;}
+.q_text_align_center{text-align: center !important;}
+.q_right_25{right: 25% !important;}
+.z_index_0{z-index: 0;}
+.z_index_1{z-index: 1;}
+.absolute_0-100{left: 0;right: 0;}
+.absolute_0-50{left: 0;right: 50%;}
+.absolute_50-100{left: 50%;right: 0;}
+.absolute_0-33{left: 0;right: 66%;}
+.absolute_33-66{left: 33%;right: 33%;}
+.absolute_66-99{left: 66%;right: 0;}
+.absolute_0-25{left: 0;right: 75%;}
+.absolute_25-50{left: 25%;right: 50%;}
+.absolute_50-75{left: 50%;right: 25%;}
+.absolute_75-100{left: 75%;right: 0;}
+
+/*HEADER*/
+.header{
+	position: absolute;
+	width: 100%;
+	min-width: 1280px;
+	height: 80px;
+	top: 0;
+	background-color: #ec6c00;
+	z-index: 1000;
+}
+.header .header_left{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 10px;
+}
+.header .header_left>img{
+	float: left;
+	height: 80px;
+	width: auto;
+}
+.header .header_left>div{
+	height: 80px;
+	line-height: 80px;
+	padding: 0 20px;
+	color: #fff;
+	font-size: larger;
+	font-weight: bolder;
+	cursor: pointer;
+	float: left;
+}
+.header .header_right1{
+	display: block;
+	position: absolute;
+	top: 10px;
+	right: 30px;
+}
+.header .header_right1>span{
+	color: #fff;
+}
+.header .header_right2{
+	display: block;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+.header .header_right2>a{
+	height: 24px;
+	line-height: 24px;
+	padding: 0 15px;
+	margin-right: 20px;
+	color:#fff;
+	background-color:#454545;
+	text-decoration: none;
+	cursor: pointer;
+	float: right;
+}
+.header .header_right2 a:hover{
+	color: #000;
+	background-color: #858585;
+}
+/*FOOTER*/
+.Foot{
+	position: absolute;
+	width: 100%;
+	min-width: 1280px;
+	height: 30px;
+	line-height: 30px;
+	bottom: 0;
+	background-color: #fff;
+	z-index: 1000;
+}
+
+/*WORKSPACE*/
+.Workspace{
+	position: absolute;
+	width: 100%;
+	top: 80px;
+	bottom: 30px;
+}
+.Content{
+	position: relative;
+	width: 100%;
+	min-width: 1280px;
+	height: 100%;
+	overflow: auto;
+}
+.Main{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+
+/*案件页面*/
+#Task>.main_L{
+	position: absolute;
+	left: 0;
+	width: 50px;
+	height: 100%;
+	background-color: #454545;
+}
+#Task>.main_L>div{
+	width: 100%;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #fff;
+	cursor: pointer;
+	color: #fff;
+}
+#Task>.main_L>div>img{
+	width: 100%;
+}
+#Task>.main_M{
+	position: absolute;
+	left: 50px;
+	right: 0;
+	height: 100%;
+}
+#Task>.main_M h1{
+	font-size: 32px;
+	margin: 30px auto 20px;
+}
+#Task>.main_R{
+	position: absolute;
+	right: 0;
+	width: 25%;
+	height: 100%;
+	background-color: #454545;
+}
+#Task>.main_R>.operation,#Task>.main_R>.info,#Task>.main_R>.picture,#Task>.main_R>.history,#Task>.main_R>.close{
+	position: absolute;
+	top: 0;
+	height: 39px;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;
+	background-color: #fff;
+	line-height: 39px;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+#Task>.main_R>.operation{left: 0;right: 78%;}
+#Task>.main_R>.info{left: 22%;right: 56%;}
+#Task>.main_R>.picture{left: 44%;right: 34%;}
+#Task>.main_R>.history{left: 66%;right: 12%;}
+#Task>.main_R>.close{left: 88%;right: 0;}
+#Task>.main_R>.operation:hover,#Task>.main_R>.info:hover,#Task>.main_R>.picture:hover,#Task>.main_R>.history:hover{
+	color: #fff;
+	background-color: #000;
+}
+#Task>.main_R>.close:hover{color: #fff;background-color: #ff0000;}
+#Task>.main_R>.dealCase_content{
+	position: absolute;
+	width: 100%;
+	top: 40px;
+	bottom: 0px;
+	overflow-y: auto;
+}
+#Task>.main_R>.dealCase_content .card{
+	margin: 20px;
+	background-color: #fff;
+}
+#Task>.main_R>.dealCase_content .card>.card_up{
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #000;
+	text-align: left;
+}
+#Task>.main_R>.dealCase_content .card>.card_up>span{
+	padding-left: 20px;
+	font-weight: bold;
+}
+#Task>.main_R>.dealCase_content .card>.card_down{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#Task>.main_R>.dealCase_content .card>.card_down>textarea{
+	width: 90%;
+	height: 70px;
+	text-align: left;
+	resize: none;
+}
+#Task>.main_R>.dealCase_content .card>.card_down>.item{
+	width: 90%;
+	margin: 15px auto;
+	text-align: left;
+}
+#Task>.main_R>.dealCase_content .card>.card_down>.item>span{
+	display:inline-block;
+	width: 35%;
+	padding-right: 5%;
+	text-align: right;
+}
+#Task>.main_R>.dealCase_content .card>.card_down>.item>span.bottom_34{
+	position: relative;
+	bottom: 34px;
+}
+#Task>.main_R>.dealCase_content .card>.card_down>.item>input{
+	width: 60%;
+	border: none;
+	text-align: left;
+}
+#Task>.main_R>.dealCase_content .card>.card_down>.item>textarea{
+	width: 60%;
+	height: 50px;
+	border: none;
+	resize: none;
+	text-align: left;
+}
+#Task>.main_R>.dealCase_content .card>.card_down .pics{
+	width: 90%;
+	margin: 16px auto 0;
+}
+#Task>.main_R>.dealCase_content .card>.card_down .pics:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+#Task>.main_R>.dealCase_content .card>.card_down .pics>img{
+	width: 80px;
+	height: 80px;
+	margin-right: 16px;
+	margin-bottom: 16px;
+	float: left;
+	cursor: pointer;
+}
+#Task>.main_R>.dealCase_content>.buttons{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 30px;
+	margin: 20px;
+}
+#Task>.main_R>.dealCase_content>.buttons>div{
+	position: absolute;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #000;
+	background-color: #fff;
+	cursor: pointer;
+}
+#Task>.main_R>.dealCase_content>.buttons>div:hover{
+	color: #fff;
+	background-color: #888888;
+}
+
+/*统计页面*/
+#Chart>.main_L{
+	position: absolute;
+	left: 0;
+	width: 50px;
+	height: 100%;
+	background: #454545;
+}
+#Chart>.main_L>div{
+	width: 100%;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #fff;
+	cursor: pointer;
+	color: #fff;
+}
+#Chart>.main_L>div>img{
+	width: 100%;
+}
+#Chart>.main_M{
+	position: absolute;
+	left: 50px;
+	right: 0;
+	height: 100%;
+}
+#Chart>.main_M h1{
+	font-size: 32px;
+	margin: 30px auto 20px;
+}
+#Chart>.main_R{
+	position: absolute;
+	right: 0;
+	width: 25%;
+	height: 100%;
+	background-color: #454545;
+}
+
+/*地图页面*/
+#Map>.main_L{
+	position: absolute;
+	left: 0;
+	width: 50px;
+	height: 100%;
+	background-color: #454545;
+}
+#Map>.main_L>div{
+	width: 100%;
+	height: 49px;
+	border-bottom: 1px solid #fff;
+	cursor: pointer;
+
+	line-height: 49px;
+	color: #fff;
+}
+#Map>.main_M{
+	position: absolute;
+	left: 50px;
+	right: 20%;
+	height: 100%;
+}
+#Map>.main_M_select{
+	position: absolute;
+	left: 80px;
+	top: 20px;
+	width: 200px;
+	height: 300px;
+	padding: 10px;
+	text-align: left;
+	color: #000;
+	background-color: #fff;
+}
+#Map>.main_R{
+	position: absolute;
+	right: 0;
+	width: 20%;
+	height: 100%;
+	background-color: #454545;
+}
+#Map>.main_R>h1{
+	font-size: 32px;
+	margin: 30px auto 20px;
+	color: #fff;
+}
+#Map>.main_R>.div_x{
+	margin: 10px 40px;
+	padding: 10px 30px;
+	background-color: #fff;
+}
+
+/*框样式*/
+.Square{
+	position: relative;
+	background-color: #fff;
+	padding:20px;
+	margin: inherit;
+}
+.Square:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/*h1{
+	font-size: 32px;
+	margin-bottom: 5px;
+}
+.div_x{
+	position: relative;
+	padding: 10px 20px 10px 0;
+}
+.div_x:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.div_y1{
+	float:left;
+}
+.div_yr1{
+	float:right;
+	position: relative;
+	right: 60px;
+}
+.div_yr2{
+	float:right;
+	position: relative;
+	margin:0 30px;
+}
+.div_yr1 input,.div_yr2 input{
+	margin:0 10px;
+}*/
+
+/*全屏提示框*/
+.fullScreen_black{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1100;
+	background: rgba(0,0,0,0.5);
+	overflow: auto;
+}
+.fullScreen_black .mid_square{
+	width: 650px;
+	margin: 100px auto 0;
+	background-color: #fff;
+	padding:10px;
+}
+.fullScreen_black .sml_square{
+	width: 300px;
+	margin: 200px auto 0;
+	background-color: #fff;
+	padding:20px 10px 10px;
+}
+.fullScreen_black .div_x{
+	position: relative;
+	padding: 10px 20px 10px 0;
+}
+.fullScreen_black .div_x:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.fullScreen_black .div_y1{
+	float:left;
+}
+.fullScreen_black .div_yr1{
+	float:right;
+	position: relative;
+	right: 60px;
+}
+.fullScreen_black .div_yr2{
+	float:right;
+	position: relative;
+	margin:0 30px;
+}
+.fullScreen_black .div_yr1 input,.fullScreen_black .div_yr2 input{
+	margin:0 10px;
+}

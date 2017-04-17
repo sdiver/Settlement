@@ -1,0 +1,51 @@
+@charset "utf-8";
+/*主体*/
+#bg{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	z-index: 0;
+	background: url(../../pics/background.jpg) no-repeat;
+	background-size: cover;
+	background-position: center 0;
+	-webkit-background-size:cover;
+	-o-background-size:cover;
+	zoom:1;
+}
+.Main{
+	position: relative;
+}
+.Main:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.div_Login{
+	background-color:#000;
+	filter:alpha(opacity=90);
+	opacity: 0.9;
+	float:right;
+	margin-top:130px;
+	margin-right:100px;
+	padding:10px 10px;
+	width:300px;
+	z-index:20;
+}
+.div_Login h1{
+	color:#fff;
+	margin:0 0 5px;
+	padding:0 0 5px;
+	border-bottom: 1px solid #fff;
+}
+.div_Login .div_Login_CheckBoxs label{
+	position:relative;
+	top:3px;
+	color:#fff;
+	font-size: 16px;
+	font-weight:600;
+	padding:0 4px;
+}

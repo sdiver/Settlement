@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>uploadtest.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+ <div class="div_x">
+		    <div style="width:700px;" class="Upload">
+		    	<form name="upload_files" action="file/upload.do" method="post" enctype="multipart/form-data">
+					<div class="div_x">
+						<div class="div_y1"><span class="pSmallR">联系人<em>&nbsp&nbsp</em></span>
+							<input name="uploadCount" type="text" class="TxtSmall" />
+						</div>
+						<div class="div_y1"><span class="pSmallR">联系电话<em>&nbsp&nbsp</em></span>
+							<input name="phonenumber" type="text" class="TxtSmall" />
+						</div>
+					</div>
+					<div class="div_x">
+						<div class="div_y1"><span class="pSmallR">上传文件<em>&nbsp&nbsp</em></span>
+							<input type="file" name="file1" class="TxtFile"/>
+						</div>
+					</div>
+					<iframe name="hiddenIframe_upload_files" style="display:none"></iframe>  
+					<div class="div_x">
+						<div class="div_yr1">
+							<input name="FilesSend" type="button" class="BtnSmall" value="提交">
+						</div>
+					</div>
+				</form>
+		    </div>
+		    </div>
+  </body>
+</html>
