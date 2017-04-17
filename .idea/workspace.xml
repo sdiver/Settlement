@@ -1,112 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d9ebd42-2c99-4c35-83d2-1fdfce869c83" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/conf/jdbc.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/conf/log4j.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/conf/mybatis-config.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/conf/spring-mvc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/conf/spring-mybatis.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/conf/spring.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/controller/contactController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/controller/settleSearchController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/controller/settlementManageController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/controller/userOperateController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/contactMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/contactMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/settlementManageMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/settlementManageMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/settlementSearchMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/settlementSearchMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/userOperateMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/mapper/userOperateMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/authorityVo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/caseInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/contact.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/forensicsInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/region.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/settleinfo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/settlementStatistics.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/model/user_info.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/contactService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/serviceImpl/contactServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/serviceImpl/settlementManageServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/serviceImpl/settlementSearchServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/serviceImpl/userOperateServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/settlementManageService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/settlementSearchService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/service/userOperateService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/util/Base64Coder.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/util/FileToZip.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/util/ImageScale.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/util/ImageUpload.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/util/encryption.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/classes/util/globalV.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/commons-fileupload-1.2.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/commons-io-2.4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/commons-logging-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/druid-1.0.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/jackson-annotations-2.8.0.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/jackson-core-2.8.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/jackson-core-asl-1.9.13.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/jackson-databind-2.8.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/log4j-1.2.17.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/mybatis-3.4.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/mybatis-spring-1.3.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.25.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/slf4j-api-1.7.21.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/slf4j-log4j12-1.7.21.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-aop-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-beans-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-context-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-context-support-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-core-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-expression-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-jdbc-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-oxm-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-test-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-tx-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-web-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/spring-webmvc-4.3.6.RELEASE.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/lib/standard-1.1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Settlement_war_exploded/index.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Settlement_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Settlement_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Settlement.iml" afterPath="$PROJECT_DIR$/Settlement.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/contactController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/contactController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/settleSearchController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/settleSearchController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/settlementManageController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/settlementManageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controller/userOperateController.java" afterPath="$PROJECT_DIR$/src/main/java/controller/userOperateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mapper/contactMapper.java" afterPath="$PROJECT_DIR$/src/main/java/mapper/contactMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mapper/settlementManageMapper.java" afterPath="$PROJECT_DIR$/src/main/java/mapper/settlementManageMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mapper/settlementSearchMapper.java" afterPath="$PROJECT_DIR$/src/main/java/mapper/settlementSearchMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mapper/userOperateMapper.java" afterPath="$PROJECT_DIR$/src/main/java/mapper/userOperateMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/caseInfo.java" afterPath="$PROJECT_DIR$/src/main/java/model/caseInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/contact.java" afterPath="$PROJECT_DIR$/src/main/java/model/contact.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/forensicsInfo.java" afterPath="$PROJECT_DIR$/src/main/java/model/forensicsInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/model/settleinfo.java" afterPath="$PROJECT_DIR$/src/main/java/model/settleinfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/contactService.java" afterPath="$PROJECT_DIR$/src/main/java/service/contactService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/serviceImpl/contactServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/serviceImpl/contactServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/serviceImpl/settlementManageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/serviceImpl/settlementManageServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/serviceImpl/settlementSearchServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/serviceImpl/settlementSearchServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/service/serviceImpl/userOperateServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/settlementManageService.java" afterPath="$PROJECT_DIR$/src/main/java/service/settlementManageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/settlementSearchService.java" afterPath="$PROJECT_DIR$/src/main/java/service/settlementSearchService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/userOperateService.java" afterPath="$PROJECT_DIR$/src/main/java/service/userOperateService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/util/FileToZip.java" afterPath="$PROJECT_DIR$/src/main/java/util/FileToZip.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/util/ImageUpload.java" afterPath="$PROJECT_DIR$/src/main/java/util/ImageUpload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/util/globalV.java" afterPath="$PROJECT_DIR$/src/main/java/util/globalV.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/contactMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/contactMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/settlementManageMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/settlementManageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/settlementSearchMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/settlementSearchMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/userOperateMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/src/main/webapp/index.html" />
-    </list>
+    <list default="true" id="0d9ebd42-2c99-4c35-83d2-1fdfce869c83" name="Default" comment="" />
     <list id="f2156c61-19e5-4135-87aa-30db38e4a575" name="Revert: 用户" comment="Revert: 用户" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -256,14 +151,7 @@
     </option>
   </component>
   <component name="MavenProjectNavigator">
-    <treeState>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-      </PATH>
-    </treeState>
+    <treeState />
   </component>
   <component name="ProjectFrameBounds">
     <option name="width" value="1366" />
@@ -1215,7 +1103,7 @@
       <workItem from="1489025151548" duration="49000" />
       <workItem from="1489144667566" duration="31859000" />
       <workItem from="1489812915218" duration="106318000" />
-      <workItem from="1492181784856" duration="8332000" />
+      <workItem from="1492181784856" duration="8551000" />
     </task>
     <task id="LOCAL-00001" summary="用户">
       <created>1488216135701</created>
@@ -1392,11 +1280,18 @@
       <option name="project" value="LOCAL" />
       <updated>1488763761778</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="ces">
+      <created>1492413867017</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1492413867017</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="302761000" />
+    <option name="totallyTimeSpent" value="302980000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1511,6 +1406,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1573,6 +1469,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1601,6 +1498,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#434#435#0" expanded="false" />
+            <element signature="e#481#482#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1638,6 +1540,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="100" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="100" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1652,6 +1555,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1670,6 +1574,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1677,6 +1582,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2070">
           <caret line="105" column="47" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
